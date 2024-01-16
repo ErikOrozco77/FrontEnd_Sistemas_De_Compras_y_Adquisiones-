@@ -1,0 +1,263 @@
+
+<mat-toolbar class="red-toolbar">
+  <div class="logo-container">
+    <img src="https://stjcolima.gob.mx/assets/img/logo_stj.png" alt="Logo" class="logo-img">
+  </div>
+  <br>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+  </mat-menu>
+</mat-toolbar>
+<br>
+<mat-toolbar class="gr-toolbar">
+  <span class="mat-h2">Lista de proveedores</span>
+</mat-toolbar>
+
+<mat-form-field appearance="fill" class="search-field" >
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" class="busqueda-search-input" placeholder="Ingrese su búsqueda">
+</mat-form-field>
+<div class="table-and-copyright-container">
+  <div class="table-container">
+    <div *ngIf="proveedores && proveedores.length > 0">
+      <h1></h1>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Id</th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.nombre }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="primerApellido">
+          <th mat-header-cell *matHeaderCellDef> Primer Apellido </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.primerApellido }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="segundoApellido">
+          <th mat-header-cell *matHeaderCellDef> Segundo Apellido </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.segundoApellido }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="razonSocial">
+          <th mat-header-cell *matHeaderCellDef> Razon Social </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.razonSocial }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estratificacion">
+          <th mat-header-cell *matHeaderCellDef> Estratificación </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.estratificacion }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="paisOrigen">
+          <th mat-header-cell *matHeaderCellDef> Pais de Origen </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.paisOrigen }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rfc">
+          <th mat-header-cell *matHeaderCellDef> RFC </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.rfc }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="INE">
+          <th mat-header-cell *matHeaderCellDef> INE </th>
+          <td mat-cell *matCellDef="let proveedor">
+            <button mat-icon-button (click)="descargarINE($event, proveedor.user_id)">
+              <mat-icon>download</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Constancia">
+          <th mat-header-cell *matHeaderCellDef> Constancia </th>
+          <td mat-cell *matCellDef="let proveedor">
+            <button mat-icon-button (click)="descargarConstancia($event, proveedor.user_id)">
+              <mat-icon>download</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="actividadEconomica">
+          <th mat-header-cell *matHeaderCellDef> Actividad Economica </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.actividadEconomica }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioNombre">
+          <th mat-header-cell *matHeaderCellDef> Domicilio </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioNombre }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catGiro">
+          <th mat-header-cell *matHeaderCellDef> Giro </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.CatGiro?.descripcion }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioNumeroExterior">
+          <th mat-header-cell *matHeaderCellDef> N° Exterior </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioNumeroExterior }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioNumeroInterior">
+          <th mat-header-cell *matHeaderCellDef> N° Interior </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioNumeroInterior }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioNombreAsentamiento">
+          <th mat-header-cell *matHeaderCellDef> Asentamiento </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioNombreAsentamiento }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioClaveLocalidad">
+          <th mat-header-cell *matHeaderCellDef> Clave de Localidad </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioClaveLocalidad }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioNombreLocalidad">
+          <th mat-header-cell *matHeaderCellDef> Nombre de la localidad </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioNombreLocalidad }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioClaveMunicipio">
+          <th mat-header-cell *matHeaderCellDef> Clave del Municipio </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioClaveMunicipio }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioNombreMunicipio">
+          <th mat-header-cell *matHeaderCellDef> Nombre del Municipio </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioNombreMunicipio }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioClaveEntidad">
+          <th mat-header-cell *matHeaderCellDef> Clave de la Entidad </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioClaveEntidad }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="domicilioCP">
+          <th mat-header-cell *matHeaderCellDef> Codigo Postal </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.domicilioCP }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="extranjeroPais">
+          <th mat-header-cell *matHeaderCellDef> Pais Extranjero </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.extranjeroPais }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="extranjeroCiudad">
+          <th mat-header-cell *matHeaderCellDef> Ciudad Extranjera </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.extranjeroCiudad }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="extranjeroCalle">
+          <th mat-header-cell *matHeaderCellDef> Calle Extranjera </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.extranjeroCalle }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="extranjeroNumero">
+          <th mat-header-cell *matHeaderCellDef> Numero Extranjero </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.extranjeroNumero }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="representanteLegalNombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre del Representante Legal </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.representanteLegalNombre }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="representanteLegalPrimerApellido">
+          <th mat-header-cell *matHeaderCellDef> Primer Apellido del Representante Legal </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.representanteLegalPrimerApellido }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="representanteLegalSegundoApellido">
+          <th mat-header-cell *matHeaderCellDef> Segundo Apellido del Representante Legal </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.representanteLegalSegundoApellido }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="representanteLegalTelefono">
+          <th mat-header-cell *matHeaderCellDef> Telefono del Representante Legal </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.representanteLegalTelefono }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="representanteLegalMail">
+          <th mat-header-cell *matHeaderCellDef> Email del Representante Legal </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.representanteLegalMail }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="website">
+          <th mat-header-cell *matHeaderCellDef> Sitio Web </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.website }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef> Telefono </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.telefono }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catSexo">
+          <th mat-header-cell *matHeaderCellDef> Sexo </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catSexo }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catOrigenId">
+          <th mat-header-cell *matHeaderCellDef> Origen </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catOrigenId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catEntidadFederativaId">
+          <th mat-header-cell *matHeaderCellDef> Entidad Federativa </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catEntidadFederativaId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catRealizaSubcontratacionesId">
+          <th mat-header-cell *matHeaderCellDef> Subcontrataciones </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catRealizaSubcontratacionesId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catDomicilioVialidadId">
+          <th mat-header-cell *matHeaderCellDef> Domicilio Vialidad </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catDomicilioVialidadId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catDomicilioTipoAsentamientoId">
+          <th mat-header-cell *matHeaderCellDef> Tipo de Asentamiento </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catDomicilioTipoAsentamientoId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catDomicilioEntidadFederativaId">
+          <th mat-header-cell *matHeaderCellDef> Domicilio Entidad Federativa </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catDomicilioEntidadFederativaId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="catRepresentanteLegalTipoAcreditacionId">
+          <th mat-header-cell *matHeaderCellDef> Tipo de Acreditación del Representante Legal </th>
+          <td mat-cell *matCellDef="let proveedor"> {{ proveedor.catRepresentanteLegalTipoAcreditacionId }} </td>
+        </ng-container>
+        <tr mat-row (click)="onRowClicked(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+    <div class="paginator-container">
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+
+    <div *ngIf="!proveedores">
+      <p>Cargando proveedores...</p>
+    </div>
+
+    <div *ngIf="proveedores && proveedores.length === 0">
+      <p>No hay proveedores disponibles.</p>
+    </div>
+  </div>
+
+  <p class="copyright">© 2024, PODER JUDICIAL DEL ESTADO DE COLIMA</p>
+</div>

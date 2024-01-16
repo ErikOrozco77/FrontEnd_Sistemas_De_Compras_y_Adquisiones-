@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link rel="stylesheet" href="login.component.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="signin">
+      <div class="back-img"></div>
+      <div class="form-section">
+        <div class="message" *ngIf="showMessage">{{ message }}</div>
+        <form *ngIf="!isLoggedIn || this.captchaResolved" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <div class="message" *ngIf="showMessage">{{ message }}</div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" placeholder="Correo electrónico" formControlName="email" />
+            <div *ngIf="loginForm?.get('email')?.hasError('required') && submitted" class="alert-danger">
+              Favor de ingresar tu correo electrónico
+            </div>
+          </div> 
+          <div class="password-field">
+            <div class="mdl-textfield">
+              <input *ngIf="!showPassword" type="password" class="mdl-textfield__input" placeholder="Contraseña"
+                formControlName="password" />
+              <input *ngIf="showPassword" type="text" class="mdl-textfield__input" placeholder="Contraseña"
+                formControlName="password" />
+            </div>
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+              <i class="material-icons">{{ showPassword ? 'visibility_off' : 'visibility' }}</i>
+            </button>
+            <button class="my-custom-button">Iniciar sesión</button>
+          </div>
+          
+          <p></p>
+
+          <div class="captcha-container">
+            <div class="g-recaptcha" data-sitekey="6Lc68MMoAAAAAMPQeSyOtH64rIbC6OwWLauTVYC_"></div>
+          </div>
+
+          <p class="no-account">¿No tienes una cuenta? <a href="/registro">Regístrate</a></p>
+        </form>
+        <br>
+        <p class="copyright">© 2024, PODER JUDICIAL DEL ESTADO DE COLIMA</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

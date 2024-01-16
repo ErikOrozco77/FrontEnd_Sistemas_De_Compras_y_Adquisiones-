@@ -1,0 +1,82 @@
+.uploadFiles {
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    padding-top: 1%;
+    min-height: 450px;
+    width: 600px;
+    box-shadow: 0px 30px 125px -5px #000;
+    background-color: rgba(255, 255, 255, 1);
+    align-items: center;
+    justify-content: center; 
+    margin: auto;
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.file-upload {
+    margin-bottom: 10px;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: rgb(165, 1, 1);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.file-input-container {
+    display: flex;
+    align-items: center;
+}
+.file-name {
+    margin-right: 10px; /* Ajusta según tu diseño */
+}
+
+.delete-button {
+    background-color: #ff0000; /* Ajusta según tu diseño */
+    color: white;
+    border: none;
+    border-radius: 10%;
+    margin-left: 5px; /* Ajusta según tu diseño */
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #ff6666; /* Ajusta según tu diseño */
+}

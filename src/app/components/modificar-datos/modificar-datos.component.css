@@ -1,0 +1,161 @@
+/* Estilo para todos los elementos de formulario */
+.mat-form-field {
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Estilo para etiquetas de formulario */
+.mat-form-field label {
+    margin-bottom: 5px;
+    color: #0e0d0d;
+}
+
+/* Estilo para inputs de formulario */
+.mat-input {
+    border-color: #0a0a0a;
+    width: 100%;
+}
+
+/* Estilo para botones del formulario */
+.mat-raised-button {
+    margin-top: 20px;
+}
+
+/* Estilo para el formulario en sí */
+.modificarproveedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    padding-top: 1%;
+    min-height: 450px;
+    width: 800px;
+    margin: auto;
+    box-shadow: 0px 30px 125px -5px #000;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Estilo para grupos de elementos de formulario */
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+/* Estilo para etiquetas de formulario en grupos */
+.label {
+    flex-basis: 100px;
+    width: 100px;
+    margin-right: 100px;
+    white-space: nowrap;
+    padding-right: 10px;
+}
+
+/* Estilo para inputs de formulario en grupos */
+.input {
+    flex: 1;
+    width: 100px;
+}
+
+/* Estilo para títulos */
+h1 {
+    color: #8f2121;
+}
+
+/* Estilo para la imagen de fondo */
+.back-img {
+    position: relative;
+    width: 50%;
+    height: 100px;
+    background: url('../../../assets/images/jlogo.jpg') no-repeat center center;
+    background-size: contain;
+}
+
+/* Estilo para botones de envío en el formulario */
+.send-in-btn {
+    width: 30%;
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    background-color: #212529;
+    font-size: 15px;
+}
+
+/* Estilo para secciones de datos personales y residencia */
+.DatosPersonal,
+.DatosResidencia {
+    width: 750px;
+    height: auto;
+    /* Cambiado a auto para adaptarse al contenido */
+    border: 2px solid #860101;
+    border-radius: 20px;
+}
+
+/* Estilo para títulos de secciones */
+h2 {
+    color: #000;
+    text-align: center;
+}
+
+/* Estilo para secciones de DatosExtranjero y DatosRepresentacion */
+.DatosExtranjero,
+.DatosRepresentacion {
+    width: 750px;
+    height: auto;
+    /* Cambiado a auto para adaptarse al contenido */
+    border: 2px solid #860101;
+    border-radius: 20px;
+}
+
+/* Estilo para el mensaje de éxito */
+.mensaje-exito {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+/* Estilo para el contenedor del mensaje de éxito */
+.mensaje-exito-contenedor {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para el botón de cierre del mensaje de éxito */
+.cerrar-mensaje {
+    margin-top: 10px;
+}
+
+/* Estilo para contenedor centrado */
+.centered-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Estilo para el elemento h3 */
+h3 {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+/* Estilo para el elemento h4 */
+h4 {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+}

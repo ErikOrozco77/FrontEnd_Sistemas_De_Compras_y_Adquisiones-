@@ -1,0 +1,57 @@
+<body>
+  <div class="signin">
+    <div class="back-img"></div>
+    <!--/.back-img-->
+    <div class="form-section">
+      <div *ngIf="showMessage" class="alert alert-success">
+        {{ message }}
+        <a href="/login">Regresar a inicio</a>
+      </div>
+      <form *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div class="message" *ngIf="showMessage">{{ message }}</div>
+
+        <!--Nombre-->
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" placeholder="Nombre completo o Razón social" formControlName="username" />
+          <div *ngIf="
+              loginForm!.get('username')!.hasError('required') && submitted
+            " class="alert-danger">
+            Favor de ingresar el nombre
+          </div>
+        </div>
+
+        <!--Email-->
+        <div class="mdl-textfield">
+          <input pattern=".{6,}" class="mdl-textfield__input" placeholder="Correo electronico"
+            formControlName="correo" />
+          <div *ngIf="loginForm!.get('correo')!.hasError('required') && submitted" class="alert-danger">
+            Favor de ingresar correo electronico
+          </div>
+          <div *ngIf="loginForm.get('correo')?.hasError('invalidEmail') && submitted" class="alert-danger">
+          Ingrese un correo electrónico válido
+          </div>
+
+
+        </div>
+
+        <!--rfc-->
+        <div class="mdl-textfield">
+          <input pattern=".{6,}" class="mdl-textfield__input" placeholder="RFC" formControlName="rfc" />
+          <div *ngIf="loginForm.get('rfc')?.hasError('required') && submitted" class="alert-danger">
+            Favor de ingresar su RFC
+          </div>
+          <div *ngIf="loginForm.get('rfc')?.hasError('invalidRFC')&& submitted" class="alert-danger">
+            El RFC debe tener 12 o 13 caracteres.
+          </div>
+        </div>
+
+
+        <button class="sign-in-btn">Registrar</button>
+      </form>
+    </div>
+
+    <!--/.form-section-->
+  </div>
+  <!--/.signin-->
+  <p class="copyright">© 2024, PODER JUDICIAL DEL ESTADO DE COLIMA</p>
+</body>

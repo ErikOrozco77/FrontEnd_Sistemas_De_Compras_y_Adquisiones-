@@ -1,0 +1,30 @@
+<br>
+<br>
+<form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()" class="uploadFiles">
+  <div class="file-upload-container">
+    
+    <div class="file-upload">
+      <label for="archivoINE">INE:</label>
+      <div class="file-input-container">
+          <input type="file" id="archivoINE" (change)="onFileChange($event, 'archivoINE')" formControlName="archivoINE">
+          <span *ngIf="fileUploadForm.get('archivoINE')?.value" class="file-name">
+              <button type="button" class="delete-button" (click)="deleteFile('archivoINE')">X</button>
+          </span>
+      </div>
+  </div>
+
+    <div class="file-upload">
+      <label for="archivoConstancia">Constancia de situación fiscal:</label>
+      <div class="file-input-container">
+        <input type="file" id="archivoConstancia" (change)="onFileChange($event, 'archivoConstancia')" formControlName="archivoConstancia">
+        <span *ngIf="fileUploadForm.get('archivoConstancia')?.value" class="file-details">
+          <button type="button" class="delete-button" (click)="deleteFile('archivoConstancia')">X</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="button-container">
+    <button type="submit" class="submit-button">Subir Archivos</button>
+  </div>
+</form>
