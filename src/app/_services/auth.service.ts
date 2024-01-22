@@ -65,4 +65,5 @@ export class AuthService {
         return this.http.get(AUTH_API + 'user-details'); 
     }
 
+
 }

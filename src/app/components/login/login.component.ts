@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../_services/auth.service';
 import { StorageService } from '../../_services/storage.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { ProveedorService } from '../../_services/proveedor.service'
 
 @Component({
     selector: 'app-login',
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private storageService: StorageService,
-        private router: Router
+        private router: Router, 
+        private proveedorService: ProveedorService
         
 
     ) {}//this.sitekey='6LeRS4AoAAAAAB0ALGIBUKTpZKD1cIah4rsxnmDy'; this.captchaResolved = false;
@@ -67,11 +69,7 @@ export class LoginComponent implements OnInit {
         const password = this.loginForm.value.password;
         this.authService.Inicio(email, password).subscribe(
             (data) => {
-                this.handleSuccessfulLogin(data);
-                this.showMessage = true;
-                this.message = 'acceso correcto';
-                const rolId = data.data.rol;
-                
+                this.handleSuccessfulLogin(data);    
             },
             (error) => {
                 this.handleFailedLogin(error);
@@ -86,22 +84,49 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
-        const rolId = data.data.rol;
 
-        // Agregar lógica de redirección según el rol
-        if (rolId === 1) {
-            // Redirigir al modo admin
-            this.router.navigate(['/admin-mode']);
+        const userData = this.storageService.getUser();
+        if (userData) {
+            const rolId = userData.data.rol;
+            console.log('Rol del usuario:', rolId);
+
+            if (rolId === 1) {
+                console.log('Redirigiendo a /admin-mode');
+                this.router.navigate(['/admin-mode']);
+            } else {
+                this.verificarExistenciaProveedor(userData.data.id);
+            }
         } else {
-            // Redirigir a otra ruta según tus necesidades
-            this.router.navigate(['/dashboard']);
+            console.error('Error: No se pudo obtener la información del usuario.');
+            this.router.navigate(['/error']);
         }
     }
+
 
     private handleFailedLogin(error: any): void {
         alert(error.error.message);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
+    }
+
+
+    verificarExistenciaProveedor(userId: number): void {
+        this.proveedorService.verificarExistenciaProveedor(userId).subscribe(
+            (response) => {
+                const proveedorExists = response.proveedorExists;
+                if (!proveedorExists) {
+                    // El proveedor no existe, redirigir a la ruta de registro de proveedor
+                    this.router.navigate(['/dashboard/registerProveedor']);
+                }else{
+                    this.router.navigate(['/dashboard']);
+
+                }
+            },
+            (error) => {
+                console.error('Error al verificar proveedor:', error);
+                this.router.navigate(['/error']);
+            }
+        );
     }
 
     togglePasswordVisibility() {

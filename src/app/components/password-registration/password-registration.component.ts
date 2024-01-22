@@ -19,6 +19,7 @@ export class PasswordRegistrationComponent implements OnInit {
   confirmPasswordVisible: boolean = false;
   passwordLengthValid: boolean = true;
 
+
   constructor(
     private passwordService: PasswordService,
     private route: ActivatedRoute,
@@ -33,9 +34,9 @@ export class PasswordRegistrationComponent implements OnInit {
     });
   }
 
-  togglePasswordVisibility(field: string) {
+  togglePasswordVisibility(field: string): void {
     const inputElement = this.elementRef.nativeElement.querySelector(`#${field}`);
-
+  
     if (field === 'password') {
       this.passwordVisible = !this.passwordVisible;
       const newType = this.passwordVisible ? 'text' : 'password';
@@ -46,6 +47,7 @@ export class PasswordRegistrationComponent implements OnInit {
       this.renderer.setAttribute(inputElement, 'type', newType);
     }
   }
+
 
   onSubmit() {
     if (this.password.length < 8) {

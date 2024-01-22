@@ -33,6 +33,13 @@ export class ProveedorService {
     return this.http.get(url);
   }
 
+  verificarExistenciaProveedor(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}redireccion/${userId}`);
+  }
+
+
+  
+
   isUserRegistered() {
     return this.isUserRegisteredSubject.value;
   }
@@ -68,6 +75,47 @@ export class ProveedorService {
     return this.http.get(`${this.baseUrl}admin-mode`);
   }
 
+    // Eliminar archivo INE
+    deleteINE(userId: string): Observable<{ message: string }> {
+      return this.http.delete<{ message: string }>(`${this.baseUrl}eliminar-ine/${userId}`);
+    }
+  
+    // Eliminar archivo Constancia
+    deleteConstancia(userId: string): Observable<{ message: string }> {
+      return this.http.delete<{ message: string }>(`${this.baseUrl}eliminar-constancia/${userId}`);
+    }
+  
+    getINEInfo(userId: number): Observable<any> {
+      const url = `${this.baseUrl}download-ine/${userId}`;
+      return this.http.get(url, { responseType: 'blob' });
+    }
+  
+    getConstanciaInfo(userId: number): Observable<any> {
+      const url = `${this.baseUrl}download-constancia/${userId}`;
+      return this.http.get(url, { responseType: 'blob' });
+    }
 
 
-}
+    replaceINE(userId: number, ineFile: File): Observable<any> {
+      const formData = new FormData();
+      formData.append('user_id', userId.toString());
+      formData.append('ine', ineFile);
+    
+      return this.http.post(`${this.baseUrl}replace-ine/${userId}`, formData);
+    }
+    
+    replaceConstancia(userId: number, constanciaFile: File): Observable<any> {
+      const formData = new FormData();
+      formData.append('user_id', userId.toString());
+      formData.append('constancia', constanciaFile);
+    
+      return this.http.post(`${this.baseUrl}replace-constancia/${userId}`, formData);
+    }
+
+    detectarArchivosAlmacenados(userId: number): Observable<any> {
+      const url = `${this.baseUrl}detectar-archivos-almacenados/${userId}`;
+      return this.http.get<any>(url); // Añade <any> aquí
+    }
+    
+  }
+

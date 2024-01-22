@@ -13,17 +13,12 @@
 
     <mat-divider></mat-divider>
 
-    <button mat-button class="menu-button" *ngIf="!usuarioRegistrado" (click)="navigateToRegistro()">
-      <mat-icon>how_to_reg</mat-icon>
-      <span> Registro</span>
-    </button>
-
-    <button mat-button class="menu-button" (click)="navigateToModificar()">
+    <button mat-button class="menu-button" (click)="navigateToModificar()" *ngIf="usuarioRegistrado">>
       <mat-icon>edit</mat-icon>
       <span> Modificar </span>
     </button>
 
-    <button mat-button class="menu-button" (click)="CargarArchivos()">
+    <button mat-button class="menu-button" (click)="CargarArchivos()" *ngIf="usuarioRegistrado">>
       <mat-icon>note_add</mat-icon>
       <span>Archivos</span>
     </button>
@@ -33,16 +28,11 @@
       <mat-icon>logout</mat-icon>
       <span>Cerrar sesión</span>
     </button>
-
-
-
-
   </mat-sidenav>
 
   <mat-sidenav-content>
 
     <router-outlet>
-
     </router-outlet>
 
   </mat-sidenav-content>

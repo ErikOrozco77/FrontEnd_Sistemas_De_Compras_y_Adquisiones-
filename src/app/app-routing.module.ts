@@ -18,6 +18,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'confirmacion/:token', component: PasswordRegistrationComponent },
     {path: 'admin-mode' , component: AdminComponent},
+    
     {
         path: 'dashboard', component: DashboardComponent,
         children: [

@@ -1,27 +1,39 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from '../../_services/auth.service';
+import { ProveedorService } from '../../_services/proveedor.service'
+import { ChangeDetectorRef } from '@angular/core'
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+
 })
 export class DashboardComponent {
   mostrarImagen = false;
   usuarioRegistrado = false;
   proveedorId: number = 0;
 
-  constructor(private router: Router, private authService: AuthService) { }
-  
-  ngOnInit() {
-    const proveedorId = localStorage.getItem('proveedorId');
-    if (proveedorId) {
-      this.usuarioRegistrado = true;
-    }
+  constructor(private router: Router, private authService: AuthService, private proveedorService: ProveedorService, private cdr: ChangeDetectorRef) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.loadComponentData();
+      }
+    });
   }
-  navigateToRegistro() {
-    this.router.navigateByUrl('/dashboard/registerProveedor');
+
+  ngOnInit() {
+    this.loadComponentData();
+  }
+
+  loadComponentData() {
+    this.usuarioRegistrado = localStorage.getItem('usuarioRegistrado') === 'true';
+    const userData = this.authService.getUser();
+    if (userData) {
+      this.verificarExistenciaProveedor(userData.data.id);
+    }
   }
 
   navigateToModificar() {
@@ -43,9 +55,30 @@ export class DashboardComponent {
     this.mostrarImagen = !this.mostrarImagen;
   }
 
-  CargarArchivos(){
+  CargarArchivos() {
     this.router.navigateByUrl('/dashboard/uploadFiles');
   }
-  
 
+  verificarExistenciaProveedor(userId: number): void {
+    this.proveedorService.verificarExistenciaProveedor(userId).subscribe(
+      (response) => {
+        const proveedorExists = response.proveedorExists;
+        if (!proveedorExists) {
+          localStorage.setItem('usuarioRegistrado', 'false');
+        } else {
+          localStorage.setItem('usuarioRegistrado', 'true');
+        }
+      },
+      (error) => {
+        console.error('Error al verificar proveedor:', error);
+        this.router.navigate(['/error']);
+      },
+      () => {
+        this.usuarioRegistrado = localStorage.getItem('usuarioRegistrado') === 'true';
+        this.cdr.detectChanges();
+      }
+    );
+  }
 }
+
+

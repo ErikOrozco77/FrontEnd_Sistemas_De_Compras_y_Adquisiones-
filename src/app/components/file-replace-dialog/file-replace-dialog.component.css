@@ -1,0 +1,21 @@
+.file-replace-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .contenedor-entrada-archivo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .indicador-archivo-seleccionado {
+    margin-left: 10px;
+  }
+
+  .button{
+    background-color: rgb(165, 1, 1);
+    color: white;
+  }

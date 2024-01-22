@@ -28,9 +28,11 @@
               <input *ngIf="showPassword" type="text" class="mdl-textfield__input" placeholder="Contraseña"
                 formControlName="password" />
             </div>
+
             <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
               <i class="material-icons">{{ showPassword ? 'visibility_off' : 'visibility' }}</i>
             </button>
+            
             <button class="my-custom-button">Iniciar sesión</button>
           </div>
           

@@ -32,6 +32,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ProveedorDetalleComponent } from './components/proveedor-detalle/proveedor-detalle.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProveedorModalService } from './_services/ProveedorModal.service';
+import { FileReplaceDialogComponent } from './components/file-replace-dialog/file-replace-dialog.component';
 
 @NgModule({
         providers: [ProveedorModalService],
@@ -47,6 +48,7 @@ import { ProveedorModalService } from './_services/ProveedorModal.service';
         FileUploadComponent,
         AdminComponent,
         ProveedorDetalleComponent,
+        FileReplaceDialogComponent,
         
 
 
