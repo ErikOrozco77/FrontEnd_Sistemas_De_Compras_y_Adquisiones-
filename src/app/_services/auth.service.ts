@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { StorageService } from './storage.service';
 
 
 const AUTH_API = 'http://localhost:8000/api/';
@@ -16,24 +17,64 @@ const httpOptions = {
 export class AuthService {
     user: any = null;
     userId: number | null = null;
+    constructor(private http: HttpClient, private storageService: StorageService,) { }
+
 
     isLoggedIn(): boolean {
-        return !!this.user; 
+        if (this.storageService.isLoggedIn()) {
+            this.user = true;
+        } else {
+            this.user = false;
+        }
+
+        return this.user;
     }
-    constructor(private http: HttpClient) { }
+
+    login(username: string, correo: string, rfc: string, recaptchaToken: string): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+
+        // Añade el recaptchaToken al cuerpo de la solicitud
+        const body = {
+            username,
+            correo,
+            rfc,
+            recaptchaToken
+        };
+
+        return this.http.post(AUTH_API + 'register', body, httpOptions).pipe(
+            tap((response: any) => {
+                localStorage.setItem('userData', JSON.stringify(response.user));
+            })
+        );
+    }
 
 
-    login(username: string, correo: string, rfc:string): Observable<any> {
-        return this.http.post(AUTH_API + 'register', { username, correo,rfc}, httpOptions
-        )
+    Inicio(email: string, password: string, recaptchaToken: string): Observable<any> {
+        console.log('Inicio:', email, password, recaptchaToken);
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+        const body = {
+            email: email,
+            password: password,
+            recaptchaToken: recaptchaToken 
+        };
+        return this.http.post<any>(`${AUTH_API}login`, body, httpOptions).pipe(
+            catchError((error) => {
+                if (error.error && error.error.resetCaptcha) {
+                    return throwError({ resetCaptcha: true });
+                }
+                return throwError(error);
+            })
+        );
     }
-
-    Inicio(email: string, password: string): Observable<any> {
-        localStorage.setItem('email', email);
-        localStorage.setItem('password', password);
-        return this.http.post(AUTH_API + 'login', { email, password }, httpOptions
-        )
-    }
+    
 
     isAuthenticated(): Observable<any> {
         return this.http.get(AUTH_API + 'user');
@@ -53,17 +94,27 @@ export class AuthService {
         );
     }
 
-
     confirmarContraseña(password: string, token: string): Observable<any> {
         return this.http.post(AUTH_API + 'confirmacion', { password, token }, httpOptions);
     }
+
     getUser(): any {
+        if (this.storageService.isLoggedIn()) {
+            this.user = true;
+        } else {
+            this.user = false;
+        }
         return this.user;
     }
 
     getUserDetails(): Observable<any> {
-        return this.http.get(AUTH_API + 'user-details'); 
+        return this.http.get(AUTH_API + 'user-details');
     }
 
 
 }
+
+
+
+
+

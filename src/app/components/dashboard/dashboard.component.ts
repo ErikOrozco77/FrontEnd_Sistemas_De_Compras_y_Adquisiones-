@@ -15,6 +15,9 @@ export class DashboardComponent {
   mostrarImagen = false;
   usuarioRegistrado = false;
   proveedorId: number = 0;
+  fullName: any;
+  showLogoutOptions: boolean = false;
+  avatarUrl: string = '';
 
   constructor(private router: Router, private authService: AuthService, private proveedorService: ProveedorService, private cdr: ChangeDetectorRef) {
     this.router.events.subscribe((event) => {
@@ -28,18 +31,39 @@ export class DashboardComponent {
     this.loadComponentData();
   }
 
+  toggleLogoutButton(): void {
+    this.showLogoutOptions = !this.showLogoutOptions; // Alternar la visibilidad de las opciones de cierre de sesión
+  }
+  
   loadComponentData() {
-    this.usuarioRegistrado = localStorage.getItem('usuarioRegistrado') === 'true';
-    const userData = this.authService.getUser();
-    if (userData) {
-      this.verificarExistenciaProveedor(userData.data.id);
+    const userData1 = window.sessionStorage.getItem('auth-user');
+    if (userData1) {
+      const userData = JSON.parse(userData1);
+      this.fullName = userData.data.name;
+      const name = userData.data.name; 
+      const words = name.split(" ");
+      let initials = words[0].charAt(0);
+      if (words.length > 1) {
+        initials += words[1].charAt(0);
+      }
+      
+      this.avatarUrl = `https://ui-avatars.com/api/?name=${initials}`;
+      
+      if (userData) {
+        this.verificarExistenciaProveedor(userData.data.id);
+      }
     }
+
   }
 
   navigateToModificar() {
     this.router.navigateByUrl('dashboard/updateProveedor');
   }
 
+
+  navigateToBuzon() {
+    this.router.navigateByUrl('dashboard/buzon');
+  }
 
   logout() {
     localStorage.removeItem('email');
@@ -59,7 +83,7 @@ export class DashboardComponent {
     this.router.navigateByUrl('/dashboard/uploadFiles');
   }
 
-  verificarExistenciaProveedor(userId: number): void {
+  verificarExistenciaProveedor(userId: any): void {
     this.proveedorService.verificarExistenciaProveedor(userId).subscribe(
       (response) => {
         const proveedorExists = response.proveedorExists;

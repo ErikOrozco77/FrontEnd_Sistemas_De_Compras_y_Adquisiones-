@@ -1,0 +1,29 @@
+table {
+  width: 90%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin: 0 auto;}
+
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+
+}
+
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+h2 {
+  text-align: center;
+}

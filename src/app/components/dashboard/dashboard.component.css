@@ -3,27 +3,37 @@
 }
 
 mat-sidenav-container{
-  height: calc(100vh - 65px);
+  height: auto;
+
 }
 
-.mat-toolbar {
-  background-color: rgb(37, 37, 37);
-  color:rgb(255, 255, 255);
-
-  
+.red-toolbar {
+  background-color: rgb(100, 0, 0);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
 }
+
+
+.navbar {
+  background-color: #2e2e2e;
+  color: white;
+  padding: 5px;
+  display: flex;
+  height: 35px;
+}
+
 
 mat-sidenav{
-  margin: 16px;
-  width: 200px;
   border-right: none;
-  background:rgb(83, 0, 0);
+  background: #a0c297;
   color:rgb(0, 0, 0);
-  border-radius: 20px;
   padding:16px;
   text-align:center;
   height:500px;
-  height: 750px;
+  height: 950px;
 }
 
 .avatar{
@@ -45,17 +55,8 @@ mat-sidenav{
 
 }
 
-.menu-button{
-  width: 100%;
-  display:flex;
-  align-items:center;
-  justify-content: flex-start;
-  font-size:  1rem;
-  mat-icon, span ,a {
-    margin-right: 8 px ;
-    color:white;
-  }
-
+.menu-buttons {
+  display: flex;
 }
 
 .content{
@@ -76,4 +77,61 @@ mat-sidenav{
   
 }
 
+
+.avatar-wrapper {
+  position: relative;
+  cursor: pointer;
+  width: 250px;
+  
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: auto; /* Cambia el ancho fijo a automático */
+}
+
+.avatar-img {
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%; 
+  margin-right: 10px;
+}
+
+.avatar-name {
+  font-size: 17px;
+  color: black;
+  flex: 1; /* Hace que el nombre ocupe el espacio disponible */
+  overflow-x: hidden; /* Desbordamiento horizontal oculto */
+  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+  text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) cuando el texto es demasiado largo */
+}
+
+
+.logout-options {
+  font-size: 17px;
+  position: absolute;
+  top: 54px;
+  right: 0;
+  width: 245px;
+  height: 30px;
+  padding: 3px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  display: none;
+  color: black;
+  text-align: center;
+}
+
+.logout-options.show {
+  display: block;
+}
+
+.table-container table tr:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo cuando el cursor está encima */
+  cursor: pointer; /* Cambia el cursor a una mano cuando está encima de la fila */
+}
 

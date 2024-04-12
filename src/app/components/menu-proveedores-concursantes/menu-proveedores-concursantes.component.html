@@ -1,0 +1,97 @@
+<title>Proveedores concursantes</title>
+<mat-toolbar class="red-toolbar">
+  <div class="logo-container">
+    <img src="https://stjcolima.gob.mx/assets/img/logo_stj.png" alt="Logo" class="logo-img">
+  </div>
+  <div>
+    <button mat-icon-button (click)="navigateToAdminMode()" aria-label="Home">
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<br>
+
+<div *ngIf="concursosActivos">
+  <div *ngIf="concursosActivos.length > 0 || searchTerm">
+    <h2 style="text-align: center;">Concursos</h2>
+
+    <div class="search-container" style="text-align: center;">
+      <mat-form-field appearance="fill" class="search-field">
+        <input matInput [(ngModel)]="searchTerm" placeholder="Buscar por ID o nombre" (input)="filtrarConcursos()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="search-field">
+        <input matInput [matDatepicker]="picker" placeholder="Buscar por fecha" [(ngModel)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-icon-button (click)="buscarConcursosPorFecha()">
+        <mat-icon>search</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="limpiarBusquedaYPaginador()" aria-label="Limpiar búsqueda">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+
+  </div>
+  <br>
+  <p style="text-align: center;">Selecciona el concurso para poder ver los proveedores invitados</p>
+
+
+  <div class="tabla-concursos table-container">
+    <table mat-table [dataSource]="dataSource" style="width: 100%;">
+      
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> ID </th>
+        <td mat-cell *matCellDef="let concurso; let i = index" style="text-align: center;" (click)="onRowClicked(i)"
+          (mouseenter)="onMouseEnterRow(i)" (mouseleave)="onMouseLeaveRow(i)"
+          [ngClass]="{ 'highlighted-row': i === selectedRowIndex }">
+          {{concurso.id_concurso}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Nombre del Concurso </th>
+        <td mat-cell *matCellDef="let concurso; let i = index" style="text-align: center;" (click)="onRowClicked(i)"
+          (mouseenter)="onMouseEnterRow(i)" (mouseleave)="onMouseLeaveRow(i)"
+          [ngClass]="{ 'highlighted-row': i === selectedRowIndex }">
+          {{concurso.nombreDeConcurso}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha de expedición </th>
+        <td mat-cell *matCellDef="let concurso; let i = index" style="text-align: center;" (click)="onRowClicked(i)"
+          (mouseenter)="onMouseEnterRow(i)" (mouseleave)="onMouseLeaveRow(i)"
+          [ngClass]="{ 'highlighted-row': i === selectedRowIndex }">
+          {{ concurso.fechaExpedicion | date: 'dd/MM/yyyy' }}
+        </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="fechaEntrega">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha de entrega de documentos</th>
+        <td mat-cell *matCellDef="let concurso; let i = index" style="text-align: center;" (click)="onRowClicked(i)"
+          (mouseenter)="onMouseEnterRow(i)" (mouseleave)="onMouseLeaveRow(i)"
+          [ngClass]="{ 'highlighted-row': i === selectedRowIndex }">
+          {{ concurso.fechaEntregadeDocumentos | date: 'dd/MM/yyyy' }}        
+        </td>
+      </ng-container>
+      
+
+      <!-- Definición de las filas -->
+      <tr mat-header-row *matHeaderRowDef="['id', 'nombre', 'fecha','fechaEntrega']"></tr>
+      <tr mat-row *matRowDef="let concurso; columns: ['id', 'nombre', 'fecha', 'fechaEntrega']"
+        (click)="openProveedoresConcursantesDialog(concurso)"></tr>
+    </table>
+  </div>
+
+
+
+
+
+  <div *ngIf="showNoResultsMessage" style="text-align: center; margin-top: 10px;">
+    <p style="color: red;">No se encontraron resultados que coincidan con la búsqueda.</p>
+  </div>
+</div>

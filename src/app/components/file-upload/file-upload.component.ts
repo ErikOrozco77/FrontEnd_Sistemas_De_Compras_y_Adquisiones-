@@ -57,7 +57,6 @@ export class FileUploadComponent {
   }
 
   private setFile(field: 'ine' | 'constancia', file: File | null) {
-    // Establecer el valor del campo dinámicamente
     this.selectedFiles[field] = file;
   }
 
@@ -71,7 +70,7 @@ export class FileUploadComponent {
     this.proveedorService.uploadFiles(formData).subscribe(
       (response) => {
         window.sessionStorage.setItem('archivosSubidos', 'true');
-        alert('Archivos subidos con éxito');
+        alert('Archivos cargados con éxito');
         this.router.navigate(['/dashboard']);
       },
       (error) => {
@@ -91,7 +90,6 @@ export class FileUploadComponent {
       },
       (error) => {
         console.error('Error al descargar archivo INE', error);
-        // Puedes mostrar un mensaje de error al usuario si es necesario.
       }
     );
   }
@@ -107,7 +105,6 @@ export class FileUploadComponent {
       },
       (error) => {
         console.error('Error al descargar archivo Constancia', error);
-        // Puedes mostrar un mensaje de error al usuario si es necesario.
       }
     );
   }
@@ -168,28 +165,23 @@ export class FileUploadComponent {
     dialogRef.afterClosed().subscribe(
       (result: File) => {
         if (result) {
-          console.log('Nuevo archivo seleccionado:', result);
 
           if (fileType === 'ine') {
             this.proveedorService.replaceINE(this.idUser, result).subscribe(
               (response) => {
                 alert('Archivo INE reemplazado con éxito');
-                // Puedes realizar acciones adicionales si es necesario
               },
               (error) => {
                 alert('Error al reemplazar el archivo INE');
-                // Manejar el error y mostrar mensajes al usuario si es necesario
               }
             );
           } else if (fileType === 'constancia') {
             this.proveedorService.replaceConstancia(this.idUser, result).subscribe(
               (response) => {
                 alert('Archivo Constancia reemplazado con éxito');
-                // Puedes realizar acciones adicionales si es necesario
               },
               (error) => {
                 alert('Error al reemplazar el archivo Constancia');
-                // Manejar el error y mostrar mensajes al usuario si es necesario
               }
             );
           }

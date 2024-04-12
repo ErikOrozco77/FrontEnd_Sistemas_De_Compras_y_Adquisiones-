@@ -1,9 +1,9 @@
-<br>
-<!-- file-upload.component.html -->
 <div class="uploadFiles">
-  <!-- Primera mat-card (Subida de Archivos) -->
-  <mat-card
-    *ngIf="!archivosSubidos && (!archivosAlmacenados || (archivosAlmacenados && !archivosAlmacenados.ine && !archivosAlmacenados.constancia))"
+  <div class="upload-warning">
+    <p>Por favor, asegúrate de subir los dos archivos en formato PDF.</p>
+  </div>
+  
+  <mat-card *ngIf="!archivosSubidos && (!archivosAlmacenados || (archivosAlmacenados && !archivosAlmacenados.ine && !archivosAlmacenados.constancia))"
     style="width: 500px; height: 200px;">
     <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()" class="form-group">
       <div class="file-upload-container">
@@ -29,12 +29,14 @@
           </div>
         </div>
       </div>
+      
       <div class="button-container">
         <button type="button" class="submit-button" (click)="onSubmit()">Subir Archivos</button>
       </div>
     </form>
   </mat-card>
-  <!-- Segunda mat-card (Acciones) -->
+  <br>
+  
   <div class="message-container"
     *ngIf="archivosSubidos || (archivosAlmacenados && (archivosAlmacenados.ine || archivosAlmacenados.constancia))">
     <br>
@@ -44,23 +46,21 @@
           <thead>
             <tr>
               <th></th>
-              <th style="text-align:center">Descargar</th>
+              <th style="text-align:center">Guardado</th>
               <th style="text-align:center">Remplazar</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngIf="archivosAlmacenados && archivosAlmacenados.ine">
               <td>INE</td>
-              <td><button class="button-spacing" (click)="downloadINE()"><mat-icon>download</mat-icon></button></td>
-              <td><button class="button-spacing"
-                  (click)="openFileReplaceDialog('ine')"><mat-icon>edit</mat-icon></button></td>
+              <td><button class="button-spacing" (click)="downloadINE()"><mat-icon>visibility</mat-icon></button></td>
+              <td><button class="button-spacing" (click)="openFileReplaceDialog('ine')"><mat-icon>edit</mat-icon></button></td>
             </tr>
             <tr *ngIf="archivosAlmacenados && archivosAlmacenados.constancia">
               <td>Constancia de Situación Fiscal</td>
-              <td><button class="button-spacing" (click)="downloadConstancia()"><mat-icon>download</mat-icon></button>
+              <td><button class="button-spacing" (click)="downloadConstancia()"><mat-icon>visibility</mat-icon></button>
               </td>
-              <td><button class="button-spacing"
-                  (click)="openFileReplaceDialog('constancia')"><mat-icon>edit</mat-icon></button></td>
+              <td><button class="button-spacing" (click)="openFileReplaceDialog('constancia')"><mat-icon>edit</mat-icon></button></td>
             </tr>
           </tbody>
         </table>

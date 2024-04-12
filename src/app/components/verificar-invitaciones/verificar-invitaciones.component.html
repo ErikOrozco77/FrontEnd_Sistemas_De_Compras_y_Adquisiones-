@@ -1,0 +1,17 @@
+<div class="buzon">
+  <div class="mensaje-lista" *ngIf="concursos.length > 0; else noConcursos">
+    <h2 class="titulo">Invitaciones</h2>
+    <ul>
+      <li *ngFor="let concurso of concursos" class="mensaje">
+        <div class="contenido-mensaje">
+          <span>¡Hola proveedor! Tienes una nueva invitación para el concurso "{{ concurso.nombreDeConcurso }}" con ID "{{ concurso.id_concurso }}". ¡No te pierdas esta oportunidad! La fecha de entrega de documentos es el {{  concurso.fechaEntregadeDocumentos | date:'dd/MM/yyyy' }}. ¡Únete ahora!</span>
+          <button class="boton-descargar" (click)="descargarInvitacion(concurso.id)"><mat-icon>mail</mat-icon></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noConcursos>
+    <p class="no-mensajes">No hay concursos disponibles en este momento.</p>
+  </ng-template>
+</div>

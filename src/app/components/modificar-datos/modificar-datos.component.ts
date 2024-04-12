@@ -114,6 +114,7 @@ export class ModificarDatosComponent implements OnInit {
       extranjeroCiudad: [''],
       extranjeroCalle: [''],
       extranjeroNumero: [''],
+      mostrarCampoExtranjero: [''],
       representanteLegalNombre: [''],
       representanteLegalPrimerApellido: [''],
       representanteLegalSegundoApellido: [''],
@@ -140,8 +141,11 @@ export class ModificarDatosComponent implements OnInit {
         (proveedor) => {
           if (proveedor) {
             this.proveedorForm.patchValue(proveedor);
-            
-            /* Sexo */
+            const tieneDireccionExtranjera = this.tieneDireccionExtranjera(proveedor);
+
+            if (tieneDireccionExtranjera) {
+              this.proveedorForm.get('esExtranjero')?.setValue('2');
+            }
             const catSexoIdControl = this.proveedorForm.get('catSexoId');
             if (catSexoIdControl) {
               catSexoIdControl.setValue((proveedor as any)?.CatSexo?.id || null);
@@ -149,7 +153,6 @@ export class ModificarDatosComponent implements OnInit {
               console.error('Control catSexoId no encontrado en el formulario');
             }
 
-            /* Representacion legal */
             const catRepresentanteLegalTipoAcreditacionIdControl = this.proveedorForm.get('catRepresentanteLegalTipoAcreditacionId');
             if (catRepresentanteLegalTipoAcreditacionIdControl) {
               catRepresentanteLegalTipoAcreditacionIdControl.setValue((proveedor as any)?.CatRepresentanteLegalTipoAcreditacion?.id || null);
@@ -157,7 +160,6 @@ export class ModificarDatosComponent implements OnInit {
               console.error('Control CatRepresentanteLegalTipoAcreditacion no encontrado en el formulario');
             }
 
-            /* Subcontraciones*/
             const catRealizaSubcontratacionesIdControl = this.proveedorForm.get('catRealizaSubcontratacionesId');
             if (catRealizaSubcontratacionesIdControl) {
               catRealizaSubcontratacionesIdControl.setValue((proveedor as any)?.CatRealizaSubcontrataciones?.id || null);
@@ -165,7 +167,6 @@ export class ModificarDatosComponent implements OnInit {
               console.error('Control CatRealizaSubcontrataciones no encontrado en el formulario');
             }
 
-            /* Origen*/
             const catOrigenIdControl = this.proveedorForm.get('catOrigenId');
             if (catOrigenIdControl) {
               catOrigenIdControl.setValue((proveedor as any)?.CatOrigen?.id || null);
@@ -173,7 +174,6 @@ export class ModificarDatosComponent implements OnInit {
               console.error('Control CatOrigen no encontrado en el formulario');
             }
 
-            /* Entidad Federativa*/
             const catEntidadFederativaIdControl = this.proveedorForm.get('catEntidadFederativaId');
             if (catEntidadFederativaIdControl) {
               catEntidadFederativaIdControl.setValue((proveedor as any)?.CatEntidadFederativa?.id || null);
@@ -181,7 +181,6 @@ export class ModificarDatosComponent implements OnInit {
               console.error('Control CatEntidadFederativa no encontrado en el formulario');
             }
 
-            /* Domicilio Viabilidad*/
             const catDomicilioVialidadIdControl = this.proveedorForm.get('catDomicilioVialidadId');
             if (catDomicilioVialidadIdControl) {
               catDomicilioVialidadIdControl.setValue((proveedor as any)?.CatDomicilioVialidad?.id || null);
@@ -189,8 +188,7 @@ export class ModificarDatosComponent implements OnInit {
               console.error('Control CatDomicilioVialidad no encontrado en el formulario');
             }
 
-            /* Tipo de Asentamiento*/
-            const catDomicilioTipoAsentamientoIdControl= this.proveedorForm.get('catDomicilioTipoAsentamientoId');
+            const catDomicilioTipoAsentamientoIdControl = this.proveedorForm.get('catDomicilioTipoAsentamientoId');
             if (catDomicilioTipoAsentamientoIdControl) {
               catDomicilioTipoAsentamientoIdControl.setValue((proveedor as any)?.CatDomicilioTipoAsentamiento?.id || null);
             } else {
@@ -209,16 +207,15 @@ export class ModificarDatosComponent implements OnInit {
             /* Domicilio Entidad Federativa*/
             const catGiroIdControl = this.proveedorForm.get('catGiroId');
             if (catGiroIdControl) {
-              catGiroIdControl.setValue((proveedor as any)?.CatOrigen?.id || null);
+              catGiroIdControl.setValue((proveedor as any)?.CatGiro?.id || null);
             } else {
-              console.error('Control CatDomicilioEntidadFederativa no encontrado en el formulario');
+              console.error('Control CatGiro no encontrado en el formulario');
             }
-
-            console.log(proveedor)
           } else {
             console.error('Proveedor no encontrado');
 
           }
+
         },
         (error) => {
           console.error('Error al cargar el proveedor', error);
@@ -228,11 +225,14 @@ export class ModificarDatosComponent implements OnInit {
     });
 
   }
+
+  tieneDireccionExtranjera(proveedor: any): boolean {
+    return !!(proveedor && proveedor.extranjeroPais && proveedor.extranjeroCiudad && proveedor.extranjeroCalle && proveedor.extranjeroNumero);
+  }
+
   toggleExtranjero() {
     this.esExtranjero = this.proveedorForm.get('esExtranjero')?.value === '2';
   }
-
-
 
   submitForm() {
     if (this.proveedorForm.valid) {
@@ -244,10 +244,9 @@ export class ModificarDatosComponent implements OnInit {
           alert('Proveedor actualizado con éxito');
           this.registroExitoso = true;
           this.router.navigateByUrl('/dashboard');
-          console.log(formData);
         },
         (error) => {
-          console.log(userId);
+
           alert('Error al actualizar el proveedor');
         }
       );

@@ -1,0 +1,15 @@
+form {
+    width: 300px; 
+    margin: auto;
+    padding: 20px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .button{
+    width: 180px;
+    color:rgb(116, 0, 0);
+}

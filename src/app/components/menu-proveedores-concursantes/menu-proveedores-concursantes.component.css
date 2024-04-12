@@ -1,0 +1,72 @@
+.tabla-concursos {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+.tabla-concursos th, .tabla-concursos td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: center;
+}
+
+.tabla-concursos th {
+  background-color: #f2f2f2;
+  font-weight: bold; 
+  font-size: 14px; 
+  position: sticky; 
+  top: 0; 
+  z-index: 1; 
+}
+
+.tabla-concursos td {
+  font-size: 14px; 
+  height: 20px; 
+}
+
+.tabla-concursos th {
+  background-color: #f2f2f2;
+}
+
+.red-toolbar {
+  background-color: rgb(100, 0, 0);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.table-container {
+  max-height: 600px; 
+  overflow-y: auto; 
+}
+
+.search-container {
+  display: flex;
+  justify-content: center; 
+}
+
+.search-field-container {
+  margin-right: 10px; 
+}
+
+.date-field {
+  width: 90%; 
+}
+
+.search-container {
+  justify-content: center;
+  margin-left:5%; 
+}
+
+.search-field-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table-container table tr:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo cuando el cursor está encima */
+  cursor: pointer; /* Cambia el cursor a una mano cuando está encima de la fila */
+}

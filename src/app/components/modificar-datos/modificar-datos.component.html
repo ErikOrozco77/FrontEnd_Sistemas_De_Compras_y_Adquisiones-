@@ -1,268 +1,392 @@
-<br>
 <form [formGroup]="proveedorForm" (ngSubmit)="submitForm()" class="modificarproveedor">
     <div class="mat-form-field mat-form-field-spacing "></div>
-    <title>Modificar Datos</title>
-    <div class="back-img"></div>
-    <h1>Modificación de datos</h1>
+    <h1>Actualización de datos</h1>
     <div class="DatosPersonal">
-        <h2>Datos.</h2>
-
-        <div class="form-group">
-            <label for="nombre" class="label">Nombre:</label>
-            <input type="text" id="nombre" formControlName="nombre" class="input">
-            
+        <h2>Datos</h2>
+        <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Nombre(s):</mat-label>
+                            <input matInput type="text" id="nombre" formControlName="nombre">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Primer apellido:</mat-label>
+                            <input matInput type="text" id="primerApellido" formControlName="primerApellido">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Segundo apellido:</mat-label>
+                            <input matInput type="text" id="segundoApellido" formControlName="segundoApellido">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="form-group">
-            <label for="primerApellido" class="label">Primer apellido:</label>
-            <input type="text" id="primerApellido" formControlName="primerApellido" class="input">
+        <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Razon social:</mat-label>
+                            <input matInput type="text" id="razonSocial" formControlName="razonSocial">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Estratificación:</mat-label>
+                            <input matInput type="text" id="estratificacion" formControlName="estratificacion">
+                        </mat-form-field>
+                    </td>
+                    <td>
+
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Pais de origen:</mat-label>
+                            <input matInput type="text" id="paisOrigen" formControlName="paisOrigen">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="form-group">
-            <label for="segundoApellido" class="label">Segundo apellido:</label>
-            <input type="text" id="segundoApellido" formControlName="segundoApellido" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="razonSocial" class="label">Razon social:</label>
-            <input type="text" id="razonSocial" formControlName="razonSocial" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="estratificacion" class="label">Estratificación:</label>
-            <input type="text" id="estratificacion" formControlName="estratificacion" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="paisOrigen" class="label">Pais de origen:</label>
-            <input type="text" id="paisOrigen" formControlName="paisOrigen" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="rfc" class="label">RFC:</label>
-            <input type="text" id="rfc" formControlName="rfc" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="actividadEconomica" class="label">Actividad economica:</label>
-            <input type="text" id="actividadEconomica" formControlName="actividadEconomica" class="input">
+        <div style="max-width: 500px; margin: auto;">
+            <table class="form-group" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>RFC:</mat-label>
+                            <input matInput type="text" id="rfc" formControlName="rfc">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Actividad economica:</mat-label>
+                            <input matInput type="text" id="actividadEconomica" formControlName="actividadEconomica">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
+    <!-------------------------------------------------> 
+
     <br>
     <br>
     <div class="DatosResidencia">
-        <h2>Residencia.</h2>
-        <div class="form-group">
-            <label for="domicilioNombre" class="label">Domicilio:</label>
-            <input type="text" id="domicilioNombre" formControlName="domicilioNombre" class="input">
+        <h2>Residencia</h2>
+        <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Domicilio:</mat-label>
+                    <input matInput type="text" id="domicilioNombre" formControlName="domicilioNombre" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Numero exterior:</mat-label>
+                    <input matInput type="text" id="domicilioNumeroExterior" formControlName="domicilioNumeroExterior" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Numero interior:</mat-label>
+                    <input matInput type="text" id="domicilioNumeroInterior" formControlName="domicilioNumeroInterior" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+        
+          <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Nombre del asentamiento:</mat-label>
+                    <input matInput type="text" id="domicilioNombreAsentamiento" formControlName="domicilioNombreAsentamiento" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Clave localidad:</mat-label>
+                    <input matInput type="text" id="domicilioClaveLocalidad" formControlName="domicilioClaveLocalidad" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Nombre de localidad:</mat-label>
+                    <input matInput type="text" id="domicilioNombreLocalidad" formControlName="domicilioNombreLocalidad" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+        
+          <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Clave de municipio:</mat-label>
+                    <input matInput type="text" id="domicilioClaveMunicipio" formControlName="domicilioClaveMunicipio" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Nombre del municipio:</mat-label>
+                    <input matInput type="text" id="domicilioNombreMunicipio" formControlName="domicilioNombreMunicipio" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Clave de entidad:</mat-label>
+                    <input matInput type="text" id="domicilioClaveEntidad" formControlName="domicilioClaveEntidad" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+        
+          <div style="width: 700px; margin: auto;">
+            <table class="form-group">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill" class="example-full-width">
+                    <mat-label>Codigo postal:</mat-label>
+                    <input matInput type="text" id="domicilioCP" formControlName="domicilioCP" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>¿Es extranjero?</mat-label>
+                    <mat-select formControlName="esExtranjero" (selectionChange)="toggleExtranjero()">
+                      <mat-option value="1">No</mat-option>
+                      <mat-option value="2">Sí</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <div *ngIf="proveedorForm.get('esExtranjero')?.value === '2'">
+                    <mat-form-field appearance="fill">
+                      <mat-label>País:</mat-label>
+                      <input matInput type="text" id="extranjeroPais" formControlName="extranjeroPais">
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        
+          <div style="width: 700px; margin: auto;">
+            <table class="form-group">
+              <tr>
+                <td>
+                  <div *ngIf="proveedorForm.get('esExtranjero')?.value === '2'">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Ciudad:</mat-label>
+                      <input matInput type="text" id="extranjeroCiudad" formControlName="extranjeroCiudad">
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td>
+                  <div *ngIf="proveedorForm.get('esExtranjero')?.value === '2'">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Calle:</mat-label>
+                      <input matInput type="text" id="extranjeroCalle" formControlName="extranjeroCalle">
+                    </mat-form-field>
+                  </div>
+                </td>
+                <td>
+                  <div *ngIf="proveedorForm.get('esExtranjero')?.value === '2'">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Número:</mat-label>
+                      <input matInput type="text" id="extranjeroNumero" formControlName="extranjeroNumero">
+                    </mat-form-field>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
-
-        <div class="form-group">
-            <label for="domicilioNumeroExterior" class="label">Numero exterior:</label>
-            <input type="text" id="domicilioNumeroExterior" formControlName="domicilioNumeroExterior" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="domicilioNumeroInterior" class="label">Numero interior:</label>
-            <input type="text" id="domicilioNumeroInterior" formControlName="domicilioNumeroInterior" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="domicilioNombreAsentamiento" class="label">Nombre del asentamiento:</label>
-            <input type="text" id="domicilioNombreAsentamiento" formControlName="domicilioNombreAsentamiento"
-                class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="domicilioClaveLocalidad" class="label">Clave localidad:</label>
-            <input type="text" id="domicilioClaveLocalidad" formControlName="domicilioClaveLocalidad" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="domicilioNombreLocalidad" class="label">Nombre de localidad:</label>
-            <input type="text" id="domicilioNombreLocalidad" formControlName="domicilioNombreLocalidad" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="domicilioClaveMunicipio" class="label">Clave de municipio:</label>
-            <input type="text" id="domicilioClaveMunicipio" formControlName="domicilioClaveMunicipio" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="domicilioNombreMunicipio" class="label">Nombre del municipio:</label>
-            <input type="text" id="domicilioNombreMunicipio" formControlName="domicilioNombreMunicipio" class="input">
-        </div>
-
-
-        <div class="form-group">
-            <label for="domicilioClaveEntidad" class="label">Clave de entidad:</label>
-            <input type="text" id="domicilioClaveEntidad" formControlName="domicilioClaveEntidad" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="domicilioCP" class="label">Codigo postal</label>
-            <input type="text" id="domicilioCP" formControlName="domicilioCP" class="input">
-        </div>
-
-        <br>
-        <br>
-        <div class="form-group">
-            <label for="extranjero" class="label">¿Es extranjero?</label>
-            <select id="extranjero" formControlName="esExtranjero" class="input" (change)="toggleExtranjero()">
-                <option value="1">No</option>
-                <option value="2">Sí</option>
-            </select>
-        </div>
-        <!-- Campos para extranjero -->
-        <div *ngIf="esExtranjero">
-            <div class="form-group">
-                <label for="extranjeroPais" class="label">País:</label>
-                <input type="text" id="extranjeroPais" formControlName="extranjeroPais" class="input">
-            </div>
-
-            <div class="form-group">
-                <label for="extranjeroCiudad" class="label">Ciudad:</label>
-                <input type="text" id="extranjeroCiudad" formControlName="extranjeroCiudad" class="input">
-            </div>
-
-            <div class="form-group">
-                <label for="extranjeroCalle" class="label">Calle:</label>
-                <input type="text" id="extranjeroCalle" formControlName="extranjeroCalle" class="input">
-            </div>
-
-            <div class="form-group">
-                <label for="extranjeroNumero" class="label">Número:</label>
-                <input type="text" id="extranjeroNumero" formControlName="extranjeroNumero" class="input">
-            </div>
-        </div>
-
-    </div>
-
 
     <!--------------REPRESENTANTE LEGAL-------------------------->
-    <h3></h3>
+    <br>
+    <br>
     <div class="DatosRepresentacion">
-        <h2>Representación legal.</h2>
+        <h2>Representación legal</h2>
 
-        <div class="form-group">
-            <label for="representanteLegalNombre" class="label">Nombre:</label>
-            <input type="text" id="representanteLegalNombre" formControlName="representanteLegalNombre" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for=" representanteLegalPrimerApellido" class="label">Primer apellido:</label>
-            <input type="text" id="representanteLegalPrimerApellido" formControlName="representanteLegalPrimerApellido"
-                class="input">
-        </div>
-
-        <div class="form-group">
-            <label for=" representanteLegalSegundoApellido" class="label">Segundo apellido:</label>
-            <input type="text" id="representanteLegalSegundoApellido"
-                formControlName="representanteLegalSegundoApellido" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="representanteLegalTelefono" class="label">RL Telefono:</label>
-            <input type="text" id="representanteLegalTelefono" formControlName="representanteLegalTelefono"
-                class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="representanteLegalMail" class="label">Correo electronico:</label>
-            <input type="text" id="representanteLegalMail" formControlName="representanteLegalMail" class="input">
-        </div>
-
-        <!---------------------------------------------------->
-        <div class="form-group">
-            <label for="website" class="label">Website:</label>
-            <input type="text" id="website" formControlName="website" class="input">
-        </div>
-
-        <div class="form-group">
-            <label for="telefono" class="label">Telefono:</label>
-            <input type="text" id="telefono" formControlName="telefono" class="input">
-        </div>
-        
-
-        <div class="form-group">
-            <label for="catSexoId" class="label">Sexo:</label>
-            <select formControlName="catSexoId" id="catSexoId" class="input">
-                <option *ngFor="let SexoId of catSexoList " [value]="SexoId.id">
-                    {{ SexoId.descripcion }}
-                </option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label for="catRepresentanteLegalTipoAcreditacionId" class="label">Tipo de acreditacion:</label>
-            <select formControlName="catRepresentanteLegalTipoAcreditacionId"
-                id="catRepresentanteLegalTipoAcreditacionId" class="input" >
-                <option *ngFor="let RepresentanteLegalTipoAcreditacion of catRepresentanteLegalTipoAcreditacionList"
-                    [value]="RepresentanteLegalTipoAcreditacion.id">{{ RepresentanteLegalTipoAcreditacion.descripcion }}
-                </option>
-            </select>
-        </div>
-
-
-        <div class="form-group">
-            <label for="catRealizaSubcontratacionesId" class="label">Subcontrataciones:</label>
-            <select formControlName="catRealizaSubcontratacionesId" id="catRealizaSubcontratacionesId" class="input">
-                <option *ngFor="let RealizaSubcontrataciones  of catRealizaSubcontratacionesList "
-                    [value]="RealizaSubcontrataciones.id">{{ RealizaSubcontrataciones.descripcion }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="catOrigenId" class="label">Origen:</label>
-            <select formControlName="catOrigenId" id="catOrigenId" class="input">
-                <option *ngFor="let Origen  of catOrigenList " [value]="Origen.id">{{ Origen.descripcion }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="catEntidadFederativaId" class="label">Entidad federativa:</label>
-            <select formControlName="catEntidadFederativaId" id="catEntidadFederativaId" class="input">
-                <option *ngFor="let EntidadFederativa  of catEntidadFederativaList " [value]="EntidadFederativa.id">{{
-                    EntidadFederativa.descripcion }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="catDomicilioVialidadId" class="label">Domicilio viabilidad:</label>
-            <select formControlName="catDomicilioVialidadId" id="catDomicilioVialidadId" class="input">
-                <option *ngFor="let DomicilioVialidad  of catDomicilioVialidadList  " [value]="DomicilioVialidad.id">{{
-                    DomicilioVialidad.descripcion }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="catDomicilioTipoAsentamientoId" class="label">Tipo de asentamiento:</label>
-            <select formControlName="catDomicilioTipoAsentamientoId" id="catDomicilioTipoAsentamientoId" class="input">
-                <option *ngFor="let DomicilioTipoAsentamiento  of catDomicilioTipoAsentamientoList  "
-                    [value]="DomicilioTipoAsentamiento.id">{{ DomicilioTipoAsentamiento.descripcion }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="catDomicilioEntidadFederativaId" class="label">Domicilio Entidad Federativa:</label>
-            <select formControlName="catDomicilioEntidadFederativaId" id="catDomicilioEntidadFederativaId"
-                class="input">
-                <option *ngFor="let DomicilioEntidadFederativa  of catDomicilioEntidadFederativaList   "
-                    [value]="DomicilioEntidadFederativa.id">{{ DomicilioEntidadFederativa.descripcion }}</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="catGiroId" class="label">Giro:</label>
-            <select formControlName="catGiroId" id="catGiroId"
-                class="input">
-                <option *ngFor="let Giro  of catGiroList   "
-                    [value]="Giro.id">{{ Giro.descripcion }}</option>
-            </select>
-        </div>
-
-
-    </div>
+        <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Nombre:</mat-label>
+                    <input matInput type="text" id="representanteLegalNombre" formControlName="representanteLegalNombre" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Primer apellido:</mat-label>
+                    <input matInput type="text" id="representanteLegalPrimerApellido" formControlName="representanteLegalPrimerApellido" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Segundo apellido:</mat-label>
+                    <input matInput type="text" id="representanteLegalSegundoApellido"
+                      formControlName="representanteLegalSegundoApellido" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+          
+          <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>RL Teléfono:</mat-label>
+                    <input matInput type="text" id="representanteLegalTelefono" formControlName="representanteLegalTelefono" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Correo electrónico:</mat-label>
+                    <input matInput type="text" id="representanteLegalMail" formControlName="representanteLegalMail" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Website:</mat-label>
+                    <input matInput type="text" id="website" formControlName="website" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+              <div style="width: 93%; margin: auto;">
+                <table class="form-group" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Teléfono:</mat-label>
+                        <input matInput type="text" id="telefono" formControlName="telefono" required>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Sexo:</mat-label>
+                        <mat-select formControlName="catSexoId" id="catSexoId">
+                          <mat-option *ngFor="let SexoId of catSexoList" [value]="SexoId.id">{{ SexoId.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Tipo de acreditación:</mat-label>
+                        <mat-select formControlName="catRepresentanteLegalTipoAcreditacionId"
+                          id="catRepresentanteLegalTipoAcreditacionId">
+                          <mat-option *ngFor="let RepresentanteLegalTipoAcreditacion of catRepresentanteLegalTipoAcreditacionList"
+                            [value]="RepresentanteLegalTipoAcreditacion.id">{{ RepresentanteLegalTipoAcreditacion.descripcion
+                            }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+          
+              <div style="width: 93%; margin: auto;">
+                <table class="form-group" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Subcontrataciones:</mat-label>
+                        <mat-select formControlName="catRealizaSubcontratacionesId" id="catRealizaSubcontratacionesId">
+                          <mat-option *ngFor="let RealizaSubcontrataciones of catRealizaSubcontratacionesList"
+                            [value]="RealizaSubcontrataciones.id">{{ RealizaSubcontrataciones.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Origen:</mat-label>
+                        <mat-select formControlName="catOrigenId" id="catOrigenId">
+                          <mat-option *ngFor="let Origen of catOrigenList" [value]="Origen.id">{{ Origen.descripcion }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Entidad federativa:</mat-label>
+                        <mat-select formControlName="catEntidadFederativaId" id="catEntidadFederativaId">
+                          <mat-option *ngFor="let EntidadFederativa of catEntidadFederativaList" [value]="EntidadFederativa.id">
+                            {{ EntidadFederativa.descripcion }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+          <div style="width: 93%; margin: auto;">
+            <table class="form-group" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Domicilio viabilidad:</mat-label>
+                    <mat-select formControlName="catDomicilioVialidadId" id="catDomicilioVialidadId">
+                      <mat-option *ngFor="let DomicilioVialidad of catDomicilioVialidadList" [value]="DomicilioVialidad.id">
+                        {{ DomicilioVialidad.descripcion }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Tipo de asentamiento:</mat-label>
+                    <mat-select formControlName="catDomicilioTipoAsentamientoId" id="catDomicilioTipoAsentamientoId">
+                      <mat-option *ngFor="let DomicilioTipoAsentamiento of catDomicilioTipoAsentamientoList"
+                        [value]="DomicilioTipoAsentamiento.id">{{ DomicilioTipoAsentamiento.descripcion }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Domicilio Entidad Federativa:</mat-label>
+                    <mat-select formControlName="catDomicilioEntidadFederativaId" id="catDomicilioEntidadFederativaId">
+                      <mat-option *ngFor="let DomicilioEntidadFederativa of catDomicilioEntidadFederativaList"
+                        [value]="DomicilioEntidadFederativa.id">{{ DomicilioEntidadFederativa.descripcion }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+          
+          <div style="max-width: 260px; margin: auto;">
+            <table class="form-group" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Giro:</mat-label>
+                    <mat-select formControlName="catGiroId" id="catGiroId">
+                      <mat-option *ngFor="let Giro of catGiroList" [value]="Giro.id">{{ Giro.descripcion }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+          </div>
     <button class="send-in-btn" [disabled]="formSubmitted">Guardar</button>
 
     <div id="mensaje-exito" class="mensaje-exito" *ngIf="registroExitoso">

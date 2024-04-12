@@ -1,0 +1,29 @@
+<title>Seleccion de Concursos</title>
+<mat-toolbar class="red-toolbar custom-toolbar">
+    <div class="logo-container">
+        <img src="https://stjcolima.gob.mx/assets/img/logo_stj.png" alt="Logo" class="logo-img">
+    </div>
+    <div>
+        <button mat-icon-button (click)="navigateToAdminMode()" aria-label="Home">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+<br>
+<div class="centered-heading">
+    <h1>Lista de Concursos Activos</h1>
+</div>
+<mat-grid-list cols="5" rowHeight="200px" colWidth="200px" gutterSize="50px" class="custom-grid-list">
+    <mat-grid-tile *ngFor="let concurso of concursos" (click)="seleccionarConcurso(concurso.id)">
+        <mat-card class="concurso-card custom-card" style="width: 300px;">
+            <mat-card-title class="custom-title">
+                <span style="display: inline-block; text-align: center;">{{ concurso.id_concurso }}</span>
+            </mat-card-title>
+            <mat-card-content>
+                {{ concurso.nombreDeConcurso }}
+            </mat-card-content>
+            <mat-card-actions class="custom-actions">
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

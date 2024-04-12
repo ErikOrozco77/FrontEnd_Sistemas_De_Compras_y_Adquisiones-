@@ -1,0 +1,49 @@
+<title>Registro de Concursos</title>
+<mat-toolbar class="red-toolbar">
+    <div class="logo-container">
+        <img src="https://stjcolima.gob.mx/assets/img/logo_stj.png" alt="Logo" class="logo-img">
+    </div>
+    <br>
+    <button mat-icon-button (click)="navigateToAdminMode()" aria-label="Home">
+        <mat-icon>home</mat-icon>
+    </button>
+</mat-toolbar>
+
+<div style="display: flex; justify-content: center; align-items: center; height: 90vh;">
+    <form class="example-form">
+        <mat-card style="width: 500px; padding: 20px;">
+            <h2 style="text-align: center; font-size: 30px;">Registro de Concurso</h2>
+            <br>
+
+            <mat-form-field class="example-full-width" style="align-self: center;">
+                <mat-label>ID del Concurso:</mat-label>
+                <input matInput type="text" [(ngModel)]="id_concurso" name="id_concurso" required />
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="align-self: center;">
+                <mat-label>Nombre del Concurso:</mat-label>
+                <input matInput type="text" [(ngModel)]="nombreDeConcurso" name="nombreDeConcurso" required />
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="align-self: center;">
+                <mat-label>Fecha de Expedicion:</mat-label>
+                <input matInput [matDatepicker]="pickerExpedicion" [(ngModel)]="fechaExpedicion" name="fechaExpedicion"
+                    required />
+                <mat-datepicker-toggle matSuffix [for]="pickerExpedicion"></mat-datepicker-toggle>
+                <mat-datepicker #pickerExpedicion></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="align-self: center;">
+                <mat-label>Fecha de Entrega de Documentos:</mat-label>
+                <input matInput [matDatepicker]="pickerEntrega" [(ngModel)]="fechaEntregadeDocumentos"
+                    name="fechaEntregadeDocumentos" required />
+                <mat-datepicker-toggle matSuffix [for]="pickerEntrega"></mat-datepicker-toggle>
+                <mat-datepicker #pickerEntrega></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-raised-button class="button"
+                style="background-color: rgb(148, 2, 2);color: white; align-self: center;"
+                (click)="registrarConcurso()">Registrar</button>
+        </mat-card>
+    </form>
+</div>

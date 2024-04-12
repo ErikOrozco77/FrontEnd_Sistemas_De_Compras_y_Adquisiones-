@@ -1,39 +1,49 @@
-<mat-toolbar color="primary">
-  <br>
-  <div class="logo-container">
-    <img src="https://stjcolima.gob.mx/assets/img/logo_stj.png" alt="Logo" class="logo-img">
-  </div>
-  <span class="example-spacer"></span>
-</mat-toolbar>
+<title>Gestion de Proveedores</title>
+<div class="dashboard-route">
+  <mat-toolbar class="red-toolbar">
+    <div class="logo-container">
+      <img src="https://stjcolima.gob.mx/assets/img/logo_stj.png" alt="Logo" class="logo-img">
+    </div>
+    <br>
+
+    <div class="avatar-wrapper">
+      <div *ngIf="avatarUrl" class="avatar-container">
+        <img [src]="avatarUrl" alt="Avatar" class="avatar-img">
+        <span class="avatar-name">{{ fullName }}</span>
+        <div class="toggle-icon" (click)="toggleLogoutButton()">
+          <mat-icon class="icon-right" color="primary">{{ showLogoutOptions ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+        </div>
+      </div>
+      <div class="logout-options" [class.show]="showLogoutOptions">
+        <span (click)="logout()">Cerrar sesión</span>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-toolbar class="navbar">
+    <div class="menu-buttons">
+      <button mat-button class="menu-button" (click)="navigateToModificar()" *ngIf="usuarioRegistrado">
+        <mat-icon>edit</mat-icon>
+        <span> Actualizar </span>
+      </button>
+
+      <button mat-button class="menu-button" (click)="CargarArchivos()" *ngIf="usuarioRegistrado">
+        <mat-icon>note_add</mat-icon>
+        <span>Archivos</span>
+      </button>
+
+      <button mat-button class="menu-button" (click)="navigateToBuzon()" *ngIf="usuarioRegistrado">
+        <mat-icon> mail_outline</mat-icon>
+        <span>Buzon</span>
+      </button>
+
+    </div>
+  </mat-toolbar>
 
 
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
-    <h4 class="name"></h4>
-
-    <mat-divider></mat-divider>
-
-    <button mat-button class="menu-button" (click)="navigateToModificar()" *ngIf="usuarioRegistrado">>
-      <mat-icon>edit</mat-icon>
-      <span> Modificar </span>
-    </button>
-
-    <button mat-button class="menu-button" (click)="CargarArchivos()" *ngIf="usuarioRegistrado">>
-      <mat-icon>note_add</mat-icon>
-      <span>Archivos</span>
-    </button>
-
-
-    <button mat-button class="menu-button" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      <span>Cerrar sesión</span>
-    </button>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-
-    <router-outlet>
-    </router-outlet>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

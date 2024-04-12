@@ -1,0 +1,34 @@
+<div style="text-align: center;">
+    <h2>Detalles del concurso</h2>
+    <p>Concurso: {{ concurso.id_concurso }}</p>
+    <p>Nombre del concurso: {{ concurso.nombreDeConcurso }}</p>
+</div>
+
+<h2 style="text-align: center;">Proveedores concursantes</h2>
+<div class="table-container" style="overflow-y: auto; max-height: 300px; margin: 0 auto; text-align: center;" *ngIf="proveedoresConcursantes && proveedoresConcursantes.length > 0; else noProveedores">
+    <table style="margin: 0 auto;">
+        <thead>
+            <tr>
+                <th style="text-align: center;">Nombre</th>
+                <th style="text-align: center;">Apellido</th>
+                <th style="text-align: center;">Razón Social</th>
+                <th style="text-align: center;">RFC</th>
+                <th style="text-align: center;">Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let proveedorConcursante of proveedoresConcursantes">
+                <td>{{ proveedorConcursante.proveedor.nombre }}</td>
+                <td>{{ proveedorConcursante.proveedor.primerApellido }} {{ proveedorConcursante.proveedor.segundoApellido }}</td>
+                <td>{{ proveedorConcursante.proveedor.razonSocial }}</td>
+                <td>{{ proveedorConcursante.proveedor.rfc }}</td>
+                <td>{{ proveedorConcursante.proveedor.telefono }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+
+<ng-template #noProveedores>
+    <p style="color: red; font-weight: bold; text-align: center;">Por el momento no se tienen invitaciones en este concurso.</p>
+</ng-template>

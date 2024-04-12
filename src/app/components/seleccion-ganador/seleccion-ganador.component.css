@@ -1,0 +1,55 @@
+.tabla-concursos {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+.table-container {
+  max-height: 600px; 
+  overflow-y: auto;
+  width: 100%; 
+}
+
+.tabla-concursos th,
+.tabla-concursos td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: center;
+  box-sizing: border-box;
+
+}
+
+.tabla-concursos th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.tabla-concursos td {
+  font-size: 14px;
+  height: 20px;
+}
+
+.red-toolbar {
+  background-color: rgb(100, 0, 0);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.custom-header {
+  height: 21px;
+}
+
+.tabla-concursos tr.mat-header-row{
+  display: flex; /* Apply flexbox to the header row */
+  justify-content: center; /* Center the header cells horizontally */
+  text-align: center;
+}
+
+th.mat-header-cell {
+  text-align: center;
+}

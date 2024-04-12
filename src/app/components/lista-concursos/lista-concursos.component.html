@@ -1,0 +1,72 @@
+<title>Lista de Concursos Activos</title>
+<mat-toolbar class="red-toolbar">
+  <div class="logo-container">
+    <img src="https://stjcolima.gob.mx/assets/img/logo_stj.png" alt="Logo" class="logo-img">
+  </div>
+  <div>
+    <button mat-icon-button (click)="navigateToAdminMode()" aria-label="Home">
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<br>
+<div *ngIf="concursosActivos">
+  <div *ngIf="concursosActivos.length > 0 || searchTerm">
+    <h2 style="text-align: center;">Concursos Activos</h2>
+
+
+    <div class="search-container" style="text-align: center;">
+      <mat-form-field appearance="fill" class="search-field">
+        <input matInput [(ngModel)]="searchTerm" placeholder="Buscar por id o nombre" (input)="filtrarConcursos()">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="search-field">
+        <input matInput [matDatepicker]="picker" placeholder="Buscar por fecha" [(ngModel)]="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-icon-button (click)="buscarConcursosPorFecha()">
+        <mat-icon>search</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="limpiarBusquedaYPaginador()" aria-label="Limpiar búsqueda">
+        <mat-icon>clear</mat-icon>
+      </button>
+      
+    </div>
+
+
+  <div *ngIf="searchTerm && concursosActivos.length === 0" style="text-align: center; margin-top: 10px;">
+    <p style="color: red;">No se encontraron resultados que coincidan con la búsqueda.</p>
+  </div>
+
+  <div class="tabla-concursos table-container">
+    <table style="width: 100%;">
+      <thead>
+        <th class="sticky-header">Id del Concurso</th>
+        <th class="sticky-header">Nombre del Concurso</th>
+        <th class="sticky-header">Fecha de Expedición</th>
+        <th class="sticky-header">Fecha de Entrega de Documentos</th>
+        <th class="sticky-header">Acciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let concurso of concursosActivos">
+          <td>{{ concurso.id_concurso}}</td>
+          <td>{{ concurso.nombreDeConcurso }}</td>
+          
+          <td>{{ formatDateToString(concurso.fechaExpedicion) }}</td>
+          <td>{{ formatDateToString(concurso.fechaEntregadeDocumentos) }}</td>
+          <td>
+            <button mat-icon-button (click)="openUpdateConcursoDialog(concurso)">
+              <mat-icon>create</mat-icon>
+            </button>
+            <button mat-icon-button (click)="borrarConcurso(concurso.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

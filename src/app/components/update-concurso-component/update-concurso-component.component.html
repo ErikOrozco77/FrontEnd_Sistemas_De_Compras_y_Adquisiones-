@@ -1,0 +1,32 @@
+<form [formGroup]="updateConcursoForm" (ngSubmit)="updateConcurso()">
+  <mat-form-field>
+    <label for="id_concurso">Id del Concurso:</label>
+    <input matInput type="text" id="id_concurso" formControlName="id_concurso" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <label for="nombreDeConcurso">Nombre del Concurso:</label>
+    <input matInput type="text" id="nombreDeConcurso" formControlName="nombreDeConcurso" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha de Entrega de Documentos:</mat-label>
+    <input matInput [matDatepicker]="pickerEntrega"  formControlName="fechaEntregadeDocumentos">
+    <mat-datepicker-toggle matSuffix [for]="pickerEntrega"></mat-datepicker-toggle>
+    <mat-datepicker #pickerEntrega></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha de Expedición:</mat-label>
+    <input matInput [matDatepicker]="fechaExpedicion" formControlName="fechaExpedicion">
+    <mat-datepicker-toggle matSuffix [for]="fechaExpedicion"></mat-datepicker-toggle>
+    <mat-datepicker #fechaExpedicion></mat-datepicker>
+  </mat-form-field>
+
+
+  <div style="display: flex; justify-content: center;">
+    <button mat-raised-button type="submit" style="background-color: rgb(148, 2, 2); color: white;">Actualizar
+      Concurso</button>
+  </div>
+
+</form>

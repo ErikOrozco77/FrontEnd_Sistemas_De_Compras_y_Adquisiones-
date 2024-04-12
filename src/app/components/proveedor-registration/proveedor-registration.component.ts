@@ -12,6 +12,7 @@ import { CatService } from '../../_services/Catalogos.service';
   selector: 'app-proveedor-registration',
   templateUrl: './proveedor-registration.component.html',
   styleUrls: ['./proveedor-registration.component.css'],
+
 })
 export class ProveedorRegistrationComponent implements OnInit {
   proveedorForm: any;
@@ -95,45 +96,45 @@ export class ProveedorRegistrationComponent implements OnInit {
       this.usuarioRegistrado = true;
     }
     this.proveedorForm = this.fb.group({
-      nombre: [''],
-      primerApellido: [''],
-      segundoApellido: [''],
-      razonSocial: [''],
-      estratificacion: [''],
-      paisOrigen: [''],
-      rfc: [''],
-      actividadEconomica: [''],
-      domicilioNombre: [''],
-      domicilioNumeroExterior: [''],
+      nombre: ['', Validators.required],
+      primerApellido: ['', Validators.required],
+      segundoApellido: ['', Validators.required],
+      razonSocial: ['', Validators.required],
+      estratificacion: ['', Validators.required],
+      paisOrigen: ['', Validators.required],
+      rfc: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(13)]],
+      actividadEconomica: ['', Validators.required],
+      domicilioNombre: ['', Validators.required],
+      domicilioNumeroExterior: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       domicilioNumeroInterior: [''],
-      domicilioNombreAsentamiento: [''],
-      domicilioClaveLocalidad: [''],
-      domicilioNombreLocalidad: [''],
-      domicilioClaveMunicipio: [''],
-      domicilioNombreMunicipio: [''],
-      domicilioClaveEntidad: [''],
-      domicilioCP: [''],
+      domicilioNombreAsentamiento: ['', Validators.required],
+      domicilioClaveLocalidad: ['', Validators.required],
+      domicilioNombreLocalidad: ['', Validators.required],
+      domicilioClaveMunicipio: ['', Validators.required],
+      domicilioNombreMunicipio: ['', Validators.required],
+      domicilioClaveEntidad: ['', Validators.required],
+      domicilioCP: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       esExtranjero: ['1'],
       extranjeroPais: [''],
       extranjeroCiudad: [''],
       extranjeroCalle: [''],
       extranjeroNumero: [''],
-      representanteLegalNombre: [''],
-      representanteLegalPrimerApellido: [''],
-      representanteLegalSegundoApellido: [''],
-      representanteLegalTelefono: [''],
-      representanteLegalMail: [''],
-      website: [''],
-      telefono: [''],
-      catSexoId: [''],
-      catOrigenId: [''],
-      catEntidadFederativaId: [''],
-      catRealizaSubcontratacionesId: [''],
-      catDomicilioVialidadId: [''],
-      catDomicilioTipoAsentamientoId: [''],
-      catDomicilioEntidadFederativaId: [''],
-      catRepresentanteLegalTipoAcreditacionId: [''],
-      catGiroId:[''],
+      representanteLegalNombre: ['', Validators.required],
+      representanteLegalPrimerApellido: ['', Validators.required],
+      representanteLegalSegundoApellido: ['', Validators.required],
+      representanteLegalTelefono: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      representanteLegalMail: ['', Validators.required],
+      website: ['', Validators.required],
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      catSexoId: ['', Validators.required],
+      catOrigenId: ['', Validators.required],
+      catEntidadFederativaId: ['', Validators.required],
+      catRealizaSubcontratacionesId: ['', Validators.required],
+      catDomicilioVialidadId: ['', Validators.required],
+      catDomicilioTipoAsentamientoId: ['', Validators.required],
+      catDomicilioEntidadFederativaId: ['', Validators.required],
+      catRepresentanteLegalTipoAcreditacionId: ['', Validators.required],
+      catGiroId:['', Validators.required],
       user_id:this.idUser
       
     });
@@ -158,7 +159,7 @@ export class ProveedorRegistrationComponent implements OnInit {
             this.usuarioRegistrado = true;
             localStorage.setItem('usuarioRegistrado', 'true');
             this.cdr.detectChanges();
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard/uploadFiles']);
           },
           (error) => {
             alert('Error al registrar el proveedor,Verifica que los datos esten completos');

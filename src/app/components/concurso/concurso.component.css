@@ -1,0 +1,17 @@
+.example-full-width {
+    width: 350px; 
+}
+
+.button{
+    width: 180px;
+    color:rgb(116, 0, 0);
+}
+
+.red-toolbar {
+    background-color: rgb(100, 0, 0);
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+}

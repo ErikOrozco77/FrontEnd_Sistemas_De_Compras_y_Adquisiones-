@@ -33,9 +33,34 @@ import { ProveedorDetalleComponent } from './components/proveedor-detalle/provee
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProveedorModalService } from './_services/ProveedorModal.service';
 import { FileReplaceDialogComponent } from './components/file-replace-dialog/file-replace-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ConcursoComponent } from './components/concurso/concurso.component';
+import { ConcursoService } from './_services/concurso.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ListaProveedoresComponent } from './components/lista-proveedores/lista-proveedores.component';
+import { ListaConcursosComponent } from './components/lista-concursos/lista-concursos.component';
+import { UpdateConcursoComponentComponent } from './components/update-concurso-component/update-concurso-component.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { SeleccionGanadorComponent } from './components/seleccion-ganador/seleccion-ganador.component';
+import { SeleccionProveedorDialogComponent } from './components/seleccion-proveedor-dialog/seleccion-proveedor-dialog.component';
+import { SeleccionProveedorModificacionComponent } from './components/seleccion-proveedor-modificacion/seleccion-proveedor-modificacion.component';
+import { MenuConcursosComponent } from './components/menu-concursos/menu-concursos.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MenuProveedoresConcursantesComponent } from './components/menu-proveedores-concursantes/menu-proveedores-concursantes.component';
+import { ProveedoresConcursantesDialogComponentComponent } from './components/proveedores-concursantes-dialog-component/proveedores-concursantes-dialog-component.component';
+import { VerificarInvitacionesComponent } from './components/verificar-invitaciones/verificar-invitaciones.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
+import { MatSortModule } from '@angular/material/sort';
+
+
+
 
 @NgModule({
-        providers: [ProveedorModalService],
+        providers: [
+            ProveedorModalService,{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
+        ],
         declarations:[
         AppComponent,
         LoginComponent,
@@ -49,12 +74,27 @@ import { FileReplaceDialogComponent } from './components/file-replace-dialog/fil
         AdminComponent,
         ProveedorDetalleComponent,
         FileReplaceDialogComponent,
-        
+        ConcursoComponent,
+        ListaProveedoresComponent,
+        ListaConcursosComponent,
+        UpdateConcursoComponentComponent,
+        ConfirmDialogComponent,
+        SeleccionGanadorComponent,
+        SeleccionProveedorDialogComponent,
+        SeleccionProveedorModificacionComponent,
+        MenuConcursosComponent,
+        MenuProveedoresConcursantesComponent,
+        ProveedoresConcursantesDialogComponentComponent,
+        VerificarInvitacionesComponent,
+        PasswordResetComponent,
+        NewPasswordComponent,
+
 
 
     
     ],
     imports: [
+        MatSortModule,
         BrowserModule,
         AppRoutingModule,
         FormsModule,
@@ -77,7 +117,16 @@ import { FileReplaceDialogComponent } from './components/file-replace-dialog/fil
         MatFormFieldModule,
         MatInputModule,
         MatDialogModule,
-
+        MatSelectModule,
+        MatDatepickerModule,
+        BrowserModule,
+        AppRoutingModule,
+        MatDialogModule,
+        MatProgressSpinnerModule,
+        MatDatepickerModule,
+        MatInputModule,
+        NgxCaptchaModule
+ 
     ],
     bootstrap: [AppComponent],
 })

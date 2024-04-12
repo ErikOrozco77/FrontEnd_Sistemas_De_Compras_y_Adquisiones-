@@ -1,0 +1,130 @@
+.red-toolbar {
+  background-color: rgb(100, 0, 0);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.gr-toolbar {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+}
+
+
+
+.mat-h2 {
+  display: flex;
+  align-items: center;
+}
+
+.row-hovered {
+  background-color: #eb0000;
+  cursor: pointer;
+}
+
+.table-container-left {
+  margin: 10px;
+  max-width: 50%;
+  flex-grow: 1;
+  padding: 0 5px;
+  overflow-y: auto;
+  max-height: 600px; 
+  
+}
+
+.table-container-right {
+  margin: 10px;
+  max-width: 50%; 
+  flex-grow: 1;
+  padding: 0 5px;
+  overflow-y: auto;
+  max-height: 600px; 
+}
+
+.table-container-left th,
+.table-container-left td,
+.table-container-right th,
+.table-container-right td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: center;
+}
+
+.table-container-left th,
+.table-container-right th {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+  z-index: 1;
+}
+
+.row-hovered {
+  background-color: #eb0000;
+  cursor: pointer;
+}
+
+.eliminar-button {
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 20%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.selected-proveedores-item {
+  position: relative;
+  max-width: 900px;
+  border-bottom: 3px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: red;
+}
+
+.loading-overlay mat-spinner {
+  width: 50px;
+  height: 50px;
+  color: white;
+}
+
+.center-content {
+  text-align: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.row-hovered {
+  background-color: lightgray; /* Cambia el color de fondo al pasar el cursor */
+}
+
+
+.table-container-left table tr:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo cuando el cursor está encima */
+  cursor: pointer; /* Cambia el cursor a una mano cuando está encima de la fila */
+}
