@@ -37,9 +37,6 @@ export class ProveedorService {
     return this.http.get<any>(`${this.baseUrl}redireccion/${userId}`);
   }
 
-
-  
-
   isUserRegistered() {
     return this.isUserRegisteredSubject.value;
   }
@@ -75,12 +72,10 @@ export class ProveedorService {
     return this.http.get(`${this.baseUrl}admin-mode`);
   }
 
-    // Eliminar archivo INE
     deleteINE(userId: string): Observable<{ message: string }> {
       return this.http.delete<{ message: string }>(`${this.baseUrl}eliminar-ine/${userId}`);
     }
   
-    // Eliminar archivo Constancia
     deleteConstancia(userId: string): Observable<{ message: string }> {
       return this.http.delete<{ message: string }>(`${this.baseUrl}eliminar-constancia/${userId}`);
     }
@@ -114,8 +109,18 @@ export class ProveedorService {
 
     detectarArchivosAlmacenados(userId: number): Observable<any> {
       const url = `${this.baseUrl}detectar-archivos-almacenados/${userId}`;
-      return this.http.get<any>(url); // Añade <any> aquí
+      return this.http.get<any>(url); 
     }
-    
+
+  downloadProveedoresExcel(): Observable<HttpResponse<Blob>> {
+    const url = `${this.baseUrl}downloadProveedoresExcel`;
+
+    return this.http.get(url, {
+      responseType: 'blob',
+      observe: 'response',
+    });
   }
+}
+
+
 

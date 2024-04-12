@@ -1,31 +1,35 @@
-body {
-  padding: 50px;
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: 'Roboto', sans-serif;
 }
 
-/* Sign In Form */
+.container {
+  text-align: center;
+}
+
 .signin {
   display: flex;
   flex-direction: column;
   border-radius: 30px;
   padding-top: 1%;
-  min-height: 450px;
+  min-height: 600px;
   width: 600px;
-  margin: auto;
   box-shadow: 0px 30px 125px -5px #000;
   background-color: rgba(255, 255, 255, 1);
 }
 
-/* Background Img */
 .back-img {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 150px;
   background: url('../../../assets/images/jlogo.jpg') no-repeat center center;
   background-size: contain;
 }
 
-/* form-section */
 .form-section {
   padding: 10px 120px 90px 90px;
 }
@@ -47,17 +51,21 @@ body {
   text-align: right;
 }
 
-/* sign-in-btn */
 .sign-in-btn {
-  width: 110%;
+  width: 50%;
   margin-top: 15px;
   padding: 15px;
   border-radius: 8px;
   color: white;
   background-color: #212529;
   font-size: 15px;
+  margin-left: 110px;
+  
 }
 
+.sign-in-btn:hover {
+  background-color: #770000;
+} 
 .mdl-textfield__input {
   box-shadow: 0 8px 32px 0 rgba(17, 17, 19, 0.171);
   border: 1px solid #212529;
@@ -74,8 +82,11 @@ body {
   color: rgb(216, 24, 24);
   letter-spacing: 1px;
   font-size: 12px;
+  /* Target only the message text */
+  .alert-message {
+    margin-top: 0; /* Prevent vertical movement */
+  }
 }
-
 .copyright {
   position: absolute;
   bottom: 0;
@@ -87,4 +98,17 @@ body {
   padding: 10px 0;
   font-size: 10px;
   color: #333;
+}
+
+.captcha-container {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 500px; 
+  margin-left: 27px;
+  margin-top:10px;
+
+  position: relative;
+
+  
 }

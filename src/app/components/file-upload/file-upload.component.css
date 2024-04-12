@@ -1,18 +1,20 @@
-/* file-upload.component.css (o tu archivo de estilos) */
 .uploadFiles {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    padding-top: 1%;
-    min-height: 450px;
-    width: 600px;
-    box-shadow: 0px 30px 125px -5px #000;
-    background-color: rgba(255, 255, 255, 1);
-    margin: auto;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  padding-top: 1%;
+  min-height: 450px;
+  width: 600px;
+  box-shadow: 0px 30px 125px -5px #000;
+  background-color: rgba(255, 255, 255, 1);
+  margin: auto; 
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+}
   .form-group {
     display: flex;
     flex-direction: column;
@@ -88,16 +90,16 @@
 
   .mat-card {
     width: 3000px;
-    height: 2000px;
+    height: 3000px;
   }
   
   .button-spacing {
-    margin-right: 20px; /* Puedes ajustar la cantidad de espacio según tus necesidades */
+    margin-right: 20px; 
   }
 
   .center-text {
     text-align: center;
   }
   .button-cell {
-    padding-top: 20px; /* Aj}usta según sea necesario */
+    padding-top: 20px; 
   }

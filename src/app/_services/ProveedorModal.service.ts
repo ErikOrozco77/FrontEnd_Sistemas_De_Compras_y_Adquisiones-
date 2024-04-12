@@ -11,12 +11,11 @@ export class ProveedorModalService {
 
   openProveedorModal(proveedor: any): void {
     const dialogRef = this.dialog.open(ProveedorDetalleComponent, {
-      width: '600px', // ajusta el ancho según tus necesidades
+      width: '600px', 
       data: proveedor,
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('La ventana emergente se cerró');
     });
   }
 }

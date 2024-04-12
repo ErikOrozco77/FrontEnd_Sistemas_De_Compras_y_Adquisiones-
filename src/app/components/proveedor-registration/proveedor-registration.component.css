@@ -1,8 +1,8 @@
-/* Estilo para todos los elementos de formulario */
+
 .select-grande {
-    font-size: 16px; /* Tamaño de fuente más grande */
-    padding: 10px;   /* Aumentar el relleno para hacer el cuadro desplegable más grande */
-    width: 200px;    /* Ancho personalizado para el cuadro desplegable (ajusta según tus necesidades) */
+    font-size: 16px; 
+    padding: 10px;   
+    width: 200px;    
   }
 
 .mat-form-field {
@@ -10,38 +10,34 @@
     margin-bottom: 20px;
 }
 
-/* Estilo para etiquetas de formulario */
+
 .mat-form-field label {
     margin-bottom: 5px;
     color: #0e0d0d;
 }
 
-/* Estilo para inputs de formulario */
 .mat-input {
     border-color: #0a0a0a;
     width: 100%;
 }
 
-/* Estilo para botones del formulario */
+
 .mat-raised-button {
     margin-top: 20px;
 }
 
-/* Estilo para el formulario en sí */
+
 .registerproveedor {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 30px;
     padding-top: 1%;
     min-height: 450px;
-    width: 800px;
     margin: auto;
     box-shadow: 0px 30px 125px -5px #000;
     background-color: rgba(255, 255, 255, 1);
 }
 
-/* Estilo para grupos de elementos de formulario */
 .form-group {
     display: flex;
     align-items: center;
@@ -50,7 +46,7 @@
     margin-left: 20px;
 }
 
-/* Estilo para etiquetas de formulario en grupos */
+
 .label {
     flex-basis: 100px;
     width: 100px;
@@ -59,18 +55,17 @@
     padding-right: 10px;
 }
 
-/* Estilo para inputs de formulario en grupos */
 .input {
     flex: 1;
     width: 100px;
 }
 
-/* Estilo para títulos */
+
 h1 {
     color: #8f2121;
 }
 
-/* Estilo para la imagen de fondo */
+
 .back-img {
     position: relative;
     width: 50%;
@@ -79,9 +74,9 @@ h1 {
     background-size: contain;
 }
 
-/* Estilo para botones de envío en el formulario */
+
 .send-in-btn {
-    width: 30%;
+    width: 10%;
     margin-top: 25px;
     padding: 15px;
     border-radius: 10px;
@@ -90,33 +85,29 @@ h1 {
     font-size: 15px;
 }
 
-/* Estilo para secciones de datos personales y residencia */
+
 .DatosPersonal,
 .DatosResidencia {
     width: 750px;
     height: auto;
-    /* Cambiado a auto para adaptarse al contenido */
     border: 2px solid #860101;
     border-radius: 20px;
 }
 
-/* Estilo para títulos de secciones */
 h2 {
     color: #000;
     text-align: center;
 }
 
-/* Estilo para secciones de DatosExtranjero y DatosRepresentacion */
+
 .DatosExtranjero,
 .DatosRepresentacion {
     width: 750px;
     height: auto;
-    /* Cambiado a auto para adaptarse al contenido */
     border: 2px solid #860101;
     border-radius: 20px;
 }
 
-/* Estilo para el mensaje de éxito */
 .mensaje-exito {
     position: fixed;
     top: 0;
@@ -129,7 +120,6 @@ h2 {
     align-items: center;
 }
 
-/* Estilo para el contenedor del mensaje de éxito */
 .mensaje-exito-contenedor {
     background-color: #fff;
     padding: 20px;
@@ -138,30 +128,44 @@ h2 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo para el botón de cierre del mensaje de éxito */
 .cerrar-mensaje {
     margin-top: 10px;
 }
 
-/* Estilo para contenedor centrado */
 .centered-container {
     display: flex;
     justify-content: center;
     height: 100vh;
 }
 
-/* Estilo para el elemento h3 */
+
 h3 {
     text-align: center;
     background-color: #ffffff;
     padding: 20px;
 }
 
-/* Estilo para el elemento h4 */
 h4 {
     text-align: center;
     background-color: #ffffff;
     padding: 20px;
   }
 
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+  }
+  
+  .example-full-width {
+    width: 100%;
+    margin: 0 auto; 
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  
 
+  

@@ -26,12 +26,6 @@ export class Userregister {
         return this.http.post(`${AUTH_API}/login`, body);
     }
 
-
-
-    //addUser(user: User): Observable<void> {
-     //   return this.http.post<void>(AUTH_API + 'register', user);
-    //}
-
     logout(): Observable<any> {
         return this.http.post(AUTH_API + 'logout', {}, httpOptions);
     }

@@ -1,19 +1,29 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from '../_services/auth.service'; // Importa tu servicio de autenticación aquí
+import { AuthService } from '../_services/auth.service';
+import { StorageService } from '../_services/storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private storageService: StorageService) {}
+
 
   canActivate(): boolean {
     if (this.authService.isLoggedIn()) {
-      return true; // El usuario está autenticado y puede acceder al dashboard
+      const userData = this.storageService.getUser();
+      const rolId = userData.data.rol;
+      if (rolId === 2) {
+        return true;
+      } else {
+        this.router.navigate(['/admin-mode']);
+        return false;
+        
+
+      }
     } else {
-      this.router.navigate(['/login']); // Redirige al usuario a la página de inicio de sesión si no está autenticado
       return false;
     }
   }
-} 
+}

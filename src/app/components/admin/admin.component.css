@@ -1,13 +1,29 @@
 .table-container {
-  max-width: 1200px;
+  max-width: 1850px;
   margin: 0 auto;
   margin-bottom: 20px;
+  overflow-y: auto; 
+  max-height: 500px; 
   
 }
-
-.paginator-container {
-  margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+.table-container  th,
+.table-container  td {
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: center;
 }
+
+.table-container  th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.table-container  td {
+  font-size: 14px;
+  height: 20px;
+}
+
 
 .red-toolbar {
   background-color: rgb(100, 0, 0);
@@ -37,10 +53,7 @@
   margin-left: 0;
 }
 
-.logo-img {
-  width: 90%;
-  height: auto;
-}
+
 
 .mat-h2 {
   display: flex;
@@ -54,17 +67,96 @@
   padding: 10px 0;
   font-size: 10px;
   color: #333;
-  margin-top: auto; 
-  
+  margin-top: auto;
 }
 
 .table-and-copyright-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 80vh;
+  min-height: 65vh;
+
+}
+.error-message {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  color: red;
 }
 
-.search-field {
-  margin-left: 110px;  /* Ajusta el valor según sea necesario */
+
+.navbar {
+  background-color: #2e2e2e;
+  color: white;
+  padding: 5px;
+  display: flex;
+  height: 35px;
+}
+
+.navbar button {
+  font-size: 15px;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2; 
+  z-index: 1;
+}
+
+.avatar-wrapper {
+  position: relative;
+  cursor: pointer;
+  width: 250px;
+  
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: auto; /* Cambia el ancho fijo a automático */
+}
+
+.avatar-img {
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%; 
+  margin-right: 10px;
+}
+
+.avatar-name {
+  font-size: 17px;
+  color: black;
+  flex: 1; /* Hace que el nombre ocupe el espacio disponible */
+  overflow-x: hidden; /* Desbordamiento horizontal oculto */
+  white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+  text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) cuando el texto es demasiado largo */
+}
+
+
+.logout-options {
+  font-size: 17px;
+  position: absolute;
+  top: 54px;
+  right: 0;
+  width: 245px;
+  height: 30px;
+  padding: 3px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  display: none;
+  color: black;
+  text-align: center;
+}
+
+.logout-options.show {
+  display: block;
+}
+
+.table-container table tr:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo cuando el cursor está encima */
+  cursor: pointer; /* Cambia el cursor a una mano cuando está encima de la fila */
 }
