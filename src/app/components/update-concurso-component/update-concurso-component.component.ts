@@ -34,6 +34,7 @@ export class UpdateConcursoComponentComponent implements OnInit {
   ) {
     this.fechaEntregaDocumentos = moment(data.fechaEntregadeDocumentos).add(1, 'days').format('YYYY-MM-DD');
     this.fechaExpedicion = moment(data.fechaExpedicion).add(1, 'days').format('YYYY-MM-DD');
+
     this.fechaEntregaDocumentosFinal = moment(data.fechaEntregadeDocumentos).format('YYYY-MM-DD');
     this.fechaExpedicionFinal = moment(data.fechaExpedicion).format('YYYY-MM-DD');
     /* const fechaExpedicion = moment(data.fechaExpedicion).format('YYYY-MM-DD'); */
@@ -46,6 +47,7 @@ export class UpdateConcursoComponentComponent implements OnInit {
       fechaEntregadeDocumentos: [this.fechaEntregaDocumentos, Validators.required],
       fechaExpedicion: [this.fechaExpedicion, Validators.required],
     });
+
   }
 
   ngOnInit(): void {
@@ -71,9 +73,11 @@ export class UpdateConcursoComponentComponent implements OnInit {
         const updatedConcurso = {
           id_concurso: this.updateConcursoForm.value.id_concurso,
           nombreDeConcurso: this.updateConcursoForm.value.nombreDeConcurso,
-          fechaEntregadeDocumentos: this.fechaEntregaDocumentosFinal,
-          fechaExpedicion: this.fechaExpedicionFinal,
+          fechaEntregadeDocumentos: moment(this.fechaEntregaDocumentosFinal).format('YYYY-MM-DD'),
+          fechaExpedicion: moment(this.fechaExpedicionFinal).format('YYYY-MM-DD'),
+          
         };
+        
         this.concursoService.actualizarConcurso(idConcurso, updatedConcurso).subscribe(
           response => {
             this.concursoActualizado.emit(); 
@@ -89,8 +93,8 @@ export class UpdateConcursoComponentComponent implements OnInit {
         const updatedConcurso = {
           id_concurso: this.updateConcursoForm.value.id_concurso,
           nombreDeConcurso: this.updateConcursoForm.value.nombreDeConcurso,
-          fechaEntregadeDocumentos: this.updateConcursoForm.value.fechaEntregadeDocumentos,
-          fechaExpedicion: this.updateConcursoForm.value.fechaExpedicion,
+          fechaEntregadeDocumentos: moment(this.updateConcursoForm.value.fechaEntregadeDocumentos).format('YYYY-MM-DD'),
+          fechaExpedicion: moment(this.updateConcursoForm.value.fechaExpedicion).format('YYYY-MM-DD'),
         };
         this.concursoService.actualizarConcurso(idConcurso, updatedConcurso).subscribe(
           response => {
@@ -105,8 +109,6 @@ export class UpdateConcursoComponentComponent implements OnInit {
         );
       }
       
-
-
       
     } else {
       console.error('Información del concurso no disponible');

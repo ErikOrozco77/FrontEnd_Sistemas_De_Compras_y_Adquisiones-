@@ -51,9 +51,6 @@ export class ListaConcursosComponent implements OnInit {
 
   openUpdateConcursoDialog(concurso: any): void {
     // Imprimir las fechas antes de abrir el diálogo
-    console.log("Fecha de expedición:", concurso.fechaExpedicion);
-    console.log("Fecha de entrega de documentos:", concurso.fechaEntregadeDocumentos);
-  
     const dialogRef = this.dialog.open(UpdateConcursoComponentComponent, {
       width: '400px',
       data: concurso,

@@ -12,7 +12,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ConcursoComponent } from './components/concurso/concurso.component';
 import { ListaProveedoresComponent } from './components/lista-proveedores/lista-proveedores.component';
 import { ListaConcursosComponent } from './components/lista-concursos/lista-concursos.component';
-import { UpdateConcursoComponentComponent } from './components/update-concurso-component/update-concurso-component.component';
 import { SeleccionGanadorComponent } from './components/seleccion-ganador/seleccion-ganador.component';
 import { MenuConcursosComponent } from './components/menu-concursos/menu-concursos.component';
 import { MenuProveedoresConcursantesComponent } from './components/menu-proveedores-concursantes/menu-proveedores-concursantes.component';

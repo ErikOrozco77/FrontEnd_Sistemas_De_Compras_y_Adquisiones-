@@ -40,7 +40,7 @@
           </div>
         </div>
         <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" (success)="onCaptchaResolved($event)" class="captcha-container"></ngx-recaptcha2>
-        <button class="sign-in-btn">Registrar</button>
+        <button [disabled]="loginForm.invalid" class="sign-in-btn">Registrar</button>
       </form>
     </div>
   </div>

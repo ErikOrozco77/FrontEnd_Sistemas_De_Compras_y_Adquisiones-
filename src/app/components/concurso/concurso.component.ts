@@ -38,8 +38,9 @@ export class ConcursoComponent {
       alert('Por favor, complete todos los campos requeridos.');
       return;
   }
-  const fechaEntregadeDocumentosFormatted = moment(this.fechaEntregadeDocumentos).format('YYYY-MM-DD');
-  const fechaExpedicionFormatted = moment(this.fechaExpedicion).format('YYYY-MM-DD');
+  const fechaEntregadeDocumentosFormatted = moment(this.fechaEntregadeDocumentos).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+  const fechaExpedicionFormatted = moment(this.fechaExpedicion).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+  
     const concursoData = {
       id: this.id,
       id_concurso: this.id_concurso,

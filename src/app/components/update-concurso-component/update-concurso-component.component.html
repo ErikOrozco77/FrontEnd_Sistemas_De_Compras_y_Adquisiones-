@@ -10,19 +10,18 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Fecha de Entrega de Documentos:</mat-label>
-    <input matInput [matDatepicker]="pickerEntrega"  formControlName="fechaEntregadeDocumentos">
-    <mat-datepicker-toggle matSuffix [for]="pickerEntrega"></mat-datepicker-toggle>
-    <mat-datepicker #pickerEntrega></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field>
     <mat-label>Fecha de Expedición:</mat-label>
     <input matInput [matDatepicker]="fechaExpedicion" formControlName="fechaExpedicion">
     <mat-datepicker-toggle matSuffix [for]="fechaExpedicion"></mat-datepicker-toggle>
     <mat-datepicker #fechaExpedicion></mat-datepicker>
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Fecha de Entrega de Documentos:</mat-label>
+    <input matInput [matDatepicker]="fechaEntregadeDocumentos" formControlName="fechaEntregadeDocumentos">
+    <mat-datepicker-toggle matSuffix [for]="fechaEntregadeDocumentos"></mat-datepicker-toggle>
+    <mat-datepicker #fechaEntregadeDocumentos></mat-datepicker>
+  </mat-form-field>
 
   <div style="display: flex; justify-content: center;">
     <button mat-raised-button type="submit" style="background-color: rgb(148, 2, 2); color: white;">Actualizar

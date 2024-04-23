@@ -35,6 +35,7 @@ export class ConcursoService {
         const url = `${this.baseUrl}updateConcurso/${id}`;
         return this.http.put(url, datosActualizados);
     }
+    
     getConcursoPorId(id: number): Observable<any> {
         return this.http.get<any>(`${this.baseUrl}concurso/${id}`);
     }
