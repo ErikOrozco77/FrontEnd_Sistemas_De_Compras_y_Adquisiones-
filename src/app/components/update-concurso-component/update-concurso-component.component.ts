@@ -18,12 +18,12 @@ import * as moment from 'moment';
 })
 export class UpdateConcursoComponentComponent implements OnInit {
   updateConcursoForm: FormGroup;
-  concurso: any; 
+  concurso: any;
   @Output() concursoActualizado: EventEmitter<any> = new EventEmitter<any>();
   fechaEntregaDocumentos
   fechaExpedicion
-  fechaEntregaDocumentosFinal:any
-  fechaExpedicionFinal:any
+  fechaEntregaDocumentosFinal: any
+  fechaExpedicionFinal: any
 
   constructor(
     public dialogRef: MatDialogRef<UpdateConcursoComponentComponent>,
@@ -69,21 +69,61 @@ export class UpdateConcursoComponentComponent implements OnInit {
 
     if (this.concurso) {
       const idConcurso = this.concurso.id;
-      if (this.updateConcursoForm.value.fechaExpedicion == this.fechaExpedicion) {
+      if (this.updateConcursoForm.value.fechaExpedicion == this.fechaExpedicion && this.updateConcursoForm.value.fechaEntregadeDocumentos == this.fechaEntregaDocumentos) {
         const updatedConcurso = {
           id_concurso: this.updateConcursoForm.value.id_concurso,
           nombreDeConcurso: this.updateConcursoForm.value.nombreDeConcurso,
           fechaEntregadeDocumentos: moment(this.fechaEntregaDocumentosFinal).format('YYYY-MM-DD'),
           fechaExpedicion: moment(this.fechaExpedicionFinal).format('YYYY-MM-DD'),
-          
+
         };
-        
+
         this.concursoService.actualizarConcurso(idConcurso, updatedConcurso).subscribe(
           response => {
-            this.concursoActualizado.emit(); 
+            this.concursoActualizado.emit();
             alert('Concurso actualizado con éxito');
             this.dialogRef.close();
-       
+
+          },
+          error => {
+            alert('Error al actualizar el concurso');
+          }
+        );
+      } else if (this.updateConcursoForm.value.fechaExpedicion == this.fechaExpedicion && this.updateConcursoForm.value.fechaEntregadeDocumentos != this.fechaEntregaDocumentos) {
+        const updatedConcurso = {
+          id_concurso: this.updateConcursoForm.value.id_concurso,
+          nombreDeConcurso: this.updateConcursoForm.value.nombreDeConcurso,
+          fechaEntregadeDocumentos: moment(this.updateConcursoForm.value.fechaEntregadeDocumentos).format('YYYY-MM-DD'),
+          fechaExpedicion: moment(this.fechaExpedicionFinal).format('YYYY-MM-DD'),
+
+        };
+
+        this.concursoService.actualizarConcurso(idConcurso, updatedConcurso).subscribe(
+          response => {
+            this.concursoActualizado.emit();
+            alert('Concurso actualizado con éxito');
+            this.dialogRef.close();
+
+          },
+          error => {
+            alert('Error al actualizar el concurso');
+          }
+        );
+      } else if (this.updateConcursoForm.value.fechaExpedicion != this.fechaExpedicion && this.updateConcursoForm.value.fechaEntregadeDocumentos == this.fechaEntregaDocumentos) {
+        const updatedConcurso = {
+          id_concurso: this.updateConcursoForm.value.id_concurso,
+          nombreDeConcurso: this.updateConcursoForm.value.nombreDeConcurso,
+          fechaEntregadeDocumentos: moment(this.fechaEntregaDocumentosFinal).format('YYYY-MM-DD'),
+          fechaExpedicion: moment(this.updateConcursoForm.value.fechaExpedicion).format('YYYY-MM-DD'),
+
+        };
+
+        this.concursoService.actualizarConcurso(idConcurso, updatedConcurso).subscribe(
+          response => {
+            this.concursoActualizado.emit();
+            alert('Concurso actualizado con éxito');
+            this.dialogRef.close();
+
           },
           error => {
             alert('Error al actualizar el concurso');
@@ -98,18 +138,18 @@ export class UpdateConcursoComponentComponent implements OnInit {
         };
         this.concursoService.actualizarConcurso(idConcurso, updatedConcurso).subscribe(
           response => {
-            this.concursoActualizado.emit(); 
+            this.concursoActualizado.emit();
             alert('Concurso actualizado con éxito');
             this.dialogRef.close();
-       
+
           },
           error => {
             alert('Error al actualizar el concurso');
           }
         );
       }
-      
-      
+
+
     } else {
       console.error('Información del concurso no disponible');
     }

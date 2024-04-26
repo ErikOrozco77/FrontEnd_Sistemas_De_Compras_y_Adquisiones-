@@ -68,6 +68,8 @@
   font-size: 10px;
   color: #333;
   margin-top: auto;
+  position: absolute; /* Establece la posición absoluta */
+  bottom: 0;
 }
 
 .table-and-copyright-container {
